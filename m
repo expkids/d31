@@ -4,7 +4,7 @@
 
 "sites":[
 ##常用系列
-{"key":"原创","name":"🫚┃修罗┃影视","type":3,"api":"csp_YCyzGuard","timeout":15,"playerType":1,"searchable":1,"quickSearch":1,"changeable":1},
+{"key":"豆","name":"🦆豆瓣┃预告片","type": 3, "api": "csp_DouDouGuard","indexs":1,"searchable": 0,"quickSearch": 0,"filterable": 0},
 {"key":"YGP","name":"🏮┃春节快乐，祝您身体健康，万事如意，财源广进┃🏮","type":3,"api":"csp_YGPGuard","searchable":0,"quickSearch":0,"changeable":0},
 {"key":"玩偶","name":"🤹‍♂️┃饭硬┃玩偶哥哥","type":3,"api":"csp_WoGGGuard","searchable":1,"quickSearch":1,"changeable":0,"ext":{"Cloud-drive":"tvfan/Cloud-drive.txt","from":"4k|auto","siteUrl":"https://www.wogg.net/","danMu":"弹"}},
 {"key":"Wogg","name":"🥎┃PG┃玩偶哥哥","type":3,"api":"csp_Wogg","quickSearch":1, "changeable":1, "filterable":1, "timeout":60, "ext":"./lib/tokenm.json$$$https://wogg.888484.xyz/$$$noproxy$$$1$$$./lib/wogg.json$$$WOGG","jar":"./pg.jar;md5;9c16582cbdf2a78e0a3c1c5068571356"},
