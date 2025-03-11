@@ -229,6 +229,8 @@
 {"name": "🔥┃野火港·澳·韩·台直播","type": 0,"url": "https://gh.tryxd.cn/https://raw.githubusercontent.com/tianya7981/jiekou/refs/heads/main/野火959","playerType": 1,"logo": "https://live.fanmingming.com/tv/{name}.png"},
 {"name": "🍜┃mytv港·澳·韩·台直播","type": 0,"url": "https://7337.kstore.space/twkj/tvzb.txt","playerType": 1,"logo": "https://live.fanmingming.com/tv/{name}.png"},
 {"name": "😍┃CF-IPTV直播","type":0,"url":"https://cnb.cool/junchao.tang/llive/-/git/raw/main/cftv.m3u","playerType":1},
+{"name": "🏮┃IPTV直播","type":0,"url":"https://codeberg.org/alantang/iptv/raw/branch/main/电视","playerType":1},
+{"name": "Ⓜ️┃广·港·澳·台直播","type":0,"url":"https://codeberg.org/alantang/MyIPTV/raw/branch/main/MyOg.txt","playerType":1},	
 {"name": "🥬┃BOX港·澳·韩·台直播","type": 0,"url": "http://8.138.7.223/live.txt","playerType": 1,"logo": "https://live.fanmingming.com/tv/{name}.png"},
 {"name": "🐤┃4GTV·央·卫·台直播","type":0,"url":"https://tvv.wqwqwq.sbs/iptv.m3u","playerType":1,"logo":"https://live.fanmingming.com/tv/{name}.png"},
 {"name": "🐏┃Live肥羊直播","type": 3,"api": "csp_Feiyang","url": "tv.m3u","ext": "https://gh.tryxd.cn/https://raw.githubusercontent.com/lystv/fmapp/ok/apk/allinone/v7/allinone;md5;https://gh.tryxd.cn/https://raw.githubusercontent.com/lystv/fmapp/ok/apk/allinone/v7/md5","jar": "https://gh.tryxd.cn/https://raw.githubusercontent.com/FongMi/CatVodSpider/main/jar/custom_spider.jar"},
