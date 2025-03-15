@@ -223,7 +223,7 @@
 
 {"name": "🐻┃CF-IPTV直播","type":0,"url":"https://git.gra.phite.ro/alantang/CF-IPTV/raw/branch/main/allinone.m3u","playerType":1},
 {"name": "🤿┃mytvsources直播","type":0,"url":"https://codeberg.org/alfredisme/mytvsources/raw/branch/main/mylist-CU-ipv6.m3u","playerType":1},
-//{"name": "🍵┃taksssss直播","type":0,"url":"https://git.gra.phite.ro/alantang/live/raw/branch/main/mix.txt","playerType":1},
+{"name": "🍵┃PLTV直播","type":0,"url":"https://codeberg.org/lxxcp/live/raw/branch/main/gsdx.txt","playerType":1},
 	
 {"name": "🏮┃Biptv直播","type":0,"url":"https://gh.tryxd.cn/https://raw.githubusercontent.com/alantang1977/X/refs/heads/main/live/biptv.txt","playerType":1},
 {"name": "🧧┃ITV直播","url": "https://cnb.cool/junchao.tang/llive/-/git/raw/main/itv.txt","epg": "http://epg.51zmt.top:8000/e.xml","ua": "okhttp/3.15","catchup": {"type": "append","replace": "livemode=1,livemode=4","source": "&starttime=${(b)yyyyMMdd'T'HHmm}00.00Z&endtime=${(e)yyyyMMdd'T'HHmm}00.00Z"}},
@@ -233,7 +233,7 @@
 {"name": "🌞┃日后港·澳·台","type": 0,"url": "http://rihou.cc:567/gggg.nzk","playerType": 1,"logo": "https://live.fanmingming.com/tv/{name}.png"},
 {"name": "🔥┃野火港·澳·韩·台直播","type": 0,"url": "https://gh.tryxd.cn/https://raw.githubusercontent.com/tianya7981/jiekou/refs/heads/main/野火959","playerType": 1,"logo": "https://live.fanmingming.com/tv/{name}.png"},
 {"name": "🍜┃mytv港·澳·韩·台直播","type": 0,"url": "https://7337.kstore.space/twkj/tvzb.txt","playerType": 1,"logo": "https://live.fanmingming.com/tv/{name}.png"},
-{"name": "🏮┃IPTV直播","type":0,"url":"https://codeberg.org/alantang/iptv/raw/branch/main/电视","playerType":1},
+{"name": "🏮┃codeberg·IPTV直播","type":0,"url":"https://codeberg.org/sy147258/iptv/raw/branch/main/电视","playerType":1},
 {"name": "Ⓜ️┃广·港·澳·台直播","type":0,"url":"https://codeberg.org/alantang/MyIPTV/raw/branch/main/MyOg.txt","playerType":1},	
 {"name": "🥬┃BOX港·澳·韩·台直播","type": 0,"url": "http://8.138.7.223/live.txt","playerType": 1,"logo": "https://live.fanmingming.com/tv/{name}.png"},
 {"name": "🐏┃Live肥羊直播","type": 3,"api": "csp_Feiyang","url": "tv.m3u","ext": "https://gh.tryxd.cn/https://raw.githubusercontent.com/lystv/fmapp/ok/apk/allinone/v7/allinone;md5;https://gh.tryxd.cn/https://raw.githubusercontent.com/lystv/fmapp/ok/apk/allinone/v7/md5","jar": "https://gh.tryxd.cn/https://raw.githubusercontent.com/FongMi/CatVodSpider/main/jar/custom_spider.jar"},
