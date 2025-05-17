@@ -1,10 +1,10 @@
 <div align="center">
-  <img src="./Pictures/107459091.jpg" alt="logo"/>
-  <h1 align="center">IPTV-API</h1>
+  <img src="./Pictures/TangImage240.png" alt="logo"/>
+  <h1 align="center">影视点播直播源</h1>
 </div>
 
-<div align="center">💋FongMi影视、TVBox、猫影视配置文件。所有资源均来自于各路大神无私分享，如有侵权，请联系删除。
-👉所有以任何方式查看本仓库内容的人、或直接或间接使用本仓库内容的使用者都应仔细阅读此声明。本仓库管理者保留随时更改或补充此免责声明的权利。一旦使用、复制、修改了本仓库内容，则视为您已接受此免责声明。</div>
+<div align="center">💋所有资源均来自于各路大神无私分享，如有侵权，请联系删除。
+👉所有以任何方式查看本仓库内容的人或直接或间接使用本仓库内容的使用者都应仔细阅读此声明。本仓库管理者保留随时更改或补充此免责声明的权利。一旦使用、复制、修改了本仓库内容，则视为您已接受此免责声明。</div>
 <br>
 <p align="center">
   <a href="https://github.com/alantang1977/X/releases">
@@ -24,7 +24,7 @@
   </a>
 </p>
 
-# 🦁Tang介绍
+# 🦁介绍
 <br>
 
 免责声明
@@ -52,7 +52,9 @@ http://www.饭太硬.com/tv
 http://www.mpanso.com/小米/DEMO.json
 
 # 🏂影視TV🏄🏻 
-![photo_2023-06-05](https://github.com/alantang1977/X/assets/107459091/179b40c9-b590-4539-bd88-197e3f2e2622)
+![tang](https://github.com/user-attachments/assets/00a1ae7f-6492-4123-9d25-4c79bb3f6eb1)
+
+
 ----
 
 ## 🚁TVBox配置接口解密： https://www.xn--sss604efuw.com/jm/ 
