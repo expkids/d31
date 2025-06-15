@@ -1,2 +1,2 @@
-2025-06-13 10:30:38,445 - ERROR - url: http://live.nctv.top/x.txt 失败❌, Error: 404, message='Not Found', url='http://live.nctv.top/x.txt'
-2025-06-13 10:30:54,529 - ERROR - url: https://codeberg.org/alfredisme/mytvsources/raw/branch/main/mylist-ipv6.m3u 失败❌, Error: 404, message='Not Found', url='https://codeberg.org/alfredisme/mytvsources/raw/branch/main/mylist-ipv6.m3u'
+2025-06-15 10:47:20,678 - ERROR - url: https://codeberg.org/alfredisme/mytvsources/raw/branch/main/mylist-ipv6.m3u 失败❌, Error: 404, message='Not Found', url='https://codeberg.org/alfredisme/mytvsources/raw/branch/main/mylist-ipv6.m3u'
+2025-06-15 10:47:20,800 - ERROR - url: http://live.nctv.top/x.txt 失败❌, Error: 404, message='Not Found', url='http://live.nctv.top/x.txt'
