@@ -1,16 +1,16 @@
 {
-    "spider": "./spider.jar",
-    "wallpaper": "https://深色壁纸.xxooo.cf/",
-    "sites": [
+	"spider": "https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749884580068/f0614.jpg;md5;44f446a8a641a4e0c34e9a9657f3b7e2",
+	"wallpaper": "https://深色壁纸.xxooo.cf/",
+	"sites": [
 		{
-			"key": "豆瓣",
-			"name": "豆瓣"
+			"key": "豆",
+			"name": "修复网盘搜【神秘的哥哥们】",
 			"type": 3,
-			"api": "csp_Douban",
-			"searchable": 0,
-			"changeable": 1,
+			"api": "csp_DouDouGuard",
 			"indexs": 1,
-			"ext": "./lib/tokenm.json$$$./lib/douban.json"
+			"searchable": 0,
+			"quickSearch": 0,
+			"changeable": 0
 		},
         {
             "key": "ConfigCenter",
