@@ -2,9 +2,9 @@
     "spider": "./spider.jar",
     "wallpaper": "https://深色壁纸.xxooo.cf/",
     "sites": [
-        {
-            "key": "Tg|豆瓣",
-            "name": "🌀南风┃本地",
+		{
+			"key": "豆瓣",
+			"name": "豆瓣"
 			"type": 3,
 			"api": "csp_Douban",
 			"searchable": 0,
