@@ -5,18 +5,13 @@
         {
             "key": "Tg|豆瓣",
             "name": "🌀南风┃本地",
-            "type": 3,
-            "api": "csp_TgYunDouBanPan",
-            "searchable": 1,
-            "changeable": 0,
-            "ext": {
-                "siteUrl": "http://127.0.0.1:9999",
-                "count": 4,
-                "channelUsername": "xx123pan,Q66Share,bdwpzhpd,alyp_TV,ucpanpan,ucquark,tianyirigeng,shares_115,oneonefivewpfx,cloud189_group,tianyi_pd2,hao115,guaguale115,yunpanchat,ydypzyfx,tgsearchers,zaihuayun,PanjClub,NewQuark,Mbox115,yunpanpan,kuakeyun,Quark_Movies,qixingzhenren,alyp_4K_Movies,yunpanshare,shareAliyun,alyp_1",
-                "commonConfig": "./json/peizhi.json",
-                "filter": "./json/douban.json"
-            }
-        },
+			"type": 3,
+			"api": "csp_Douban",
+			"searchable": 0,
+			"changeable": 1,
+			"indexs": 1,
+			"ext": "./lib/tokenm.json$$$./lib/douban.json"
+		},
         {
             "key": "ConfigCenter",
             "name": "🅿网盘配置中心",
