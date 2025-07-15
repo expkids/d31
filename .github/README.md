@@ -1,4 +1,4 @@
-###### ⚠️ **重要提示**：使用前请务必阅读 [免责声明](.github/DISCLAIMER.md)
+###### ⚠️ **重要提示**：使用前请务必阅读 [免责声明](DISCLAIMER.md)
 
 #### 群组里有 Github 通知 [频道](https://t.me/clun_tz) / [群组](https://t.me/clun_top)
 
@@ -40,7 +40,7 @@ https://clun.top/fun.json
 https://clun.top/fty.json
 ```
 
-```不知
+```张佬
 https://clun.top/aa.json
 ```
 
