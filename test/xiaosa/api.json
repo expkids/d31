@@ -180,7 +180,8 @@
             "quickSearch": 1,
             "api": "csp_AppGet2",
             "ext": {
-                "url": "http://121.62.21.14:520",
+                "url": "",
+                "site": "https://guwozj-1319364746.cos.ap-guangzhou.myqcloud.com/app.txt",
                 "dataKey": "ca94b06ca3c7d80e",
                 "dataIv": "ca94b06ca3c7d80e",
                 "deviceId": "",
@@ -237,7 +238,7 @@
             "quickSearch": 1,
             "api": "csp_AppGet2",
             "ext": {
-                "url": "https://qjappcms.cs4k.top",
+                "url": "https://newappcms.cs4k.top",
                 "dataKey": "Z98KXaLtO2wC1Pte",
                 "dataIv": "Z98KXaLtO2wC1Pte",
                 "deviceId": "",
@@ -369,20 +370,6 @@
                 "dataIv": "NiDGaKiVnkO3QX1Q",
                 "deviceId": "2fbaf48ee97783260bc907e3ab0bd40c3",
                 "version": "200"
-            }
-        },
-        {
-            "key": "瓜萌",
-            "name": "瓜萌｜APP",
-            "type": 3,
-            "quickSearch": 1,
-            "api": "csp_AppGet",
-            "ext": {
-                "url": "https://www.guahd.com",
-                "dataKey": "f2A7D4B9E8C16531",
-                "dataIv": "f2A7D4B9E8C16531",
-                "deviceId": "",
-                "version": ""
             }
         },
         {
