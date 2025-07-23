@@ -101,14 +101,14 @@
             "name": "咖啡｜APP",
             "type": 3,
             "quickSearch": 1,
-            "api": "csp_AppGet2",
+            "api": "csp_AppGet",
             "ext": {
                 "url": "",
-                "site": "https://omofun.lol/coffee.txt",
-                "dataKey": "qwertyuiopqwertm",
-                "dataIv": "qwertyuiopqwertm",
+                "site": "https://omofun.lol/1.txt",
+                "dataKey": "skdhalkshqklwkj1",
+                "dataIv": "skdhalkshqklwkj1",
                 "deviceId": "",
-                "version": "",
+                "version": "109",
                 "ua": "okhttp/3.10.0"
             }
         },
@@ -879,16 +879,6 @@
             "type": 3,
             "api": "./js/cloud.min.js",
             "ext": "./js/双星.js",
-            "style": {
-                "type": "list"
-            }
-        },
-        {
-            "key": "懒盘",
-            "name": "懒盘｜4K弹幕",
-            "type": 3,
-            "api": "./js/cloud.min.js",
-            "ext": "./js/懒盘.js",
             "style": {
                 "type": "list"
             }
@@ -1766,12 +1756,6 @@
             "ext": "./json/alist.json"
         },
         {
-            "key": "网络直播",
-            "name": "网络｜直播",
-            "type": 3,
-            "api": "./py/网络直播.py"
-        },
-        {
             "key": "88看球",
             "name": "88｜看球",
             "type": 3,
@@ -1780,6 +1764,18 @@
             "style": {
                 "type": "list"
             }
+        },
+        {
+            "key": "网络直播",
+            "name": "网络｜直播",
+            "type": 3,
+            "api": "./py/网络直播.py"
+        },
+        {
+            "key": "哔哩直播",
+            "name": "哔哩｜直播",
+            "type": 3,
+            "api": "./py/哔哩直播.py"
         },
         {
             "key": "哔哩合集",
