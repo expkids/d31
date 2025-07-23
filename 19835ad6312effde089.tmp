@@ -1,7 +1,0 @@
-.git/objects/*
-data/archive
-.DS_Store
-runtime/*
-archive/
-*.ipynb
-*.pyc
