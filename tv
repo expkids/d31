@@ -23,6 +23,10 @@
 		{
 			"url": "./jsm.json",
 			"name": "PG"
+		},
+		{
+			"url": "./ok.json",
+			"name": "OK"
 		}
 	]
 }
