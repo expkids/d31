@@ -127,15 +127,15 @@
             }
         },
         {
-            "key": "APP4K",
+            "key": "蓝光",
             "name": "蓝光｜APP",
             "type": 3,
             "quickSearch": 1,
             "api": "csp_AppGet",
             "ext": {
-                "url": "http://59.153.167.186",
-                "dataKey": "SDSFET23215FDSF2",
-                "dataIv": "SDSFET23215FDSF2",
+                "url": "http://122.228.193.2:9654",
+                "dataKey": "ca94b06ca3c7d80e",
+                "dataIv": "ca94b06ca3c7d80e",
                 "deviceId": "",
                 "version": "119"
             }
@@ -1217,6 +1217,13 @@
             "type": 3,
             "api": "csp_HBPQ",
             "ext": "./XBPQ/海纳影视.json"
+        },
+        {
+            "key": "免费影视",
+            "name": "免费｜影视",
+            "type": 3,
+            "api": "csp_HBPQ",
+            "ext": "./XBPQ/免费影视.json"
         },
         {
             "key": "面包影视",
