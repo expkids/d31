@@ -1771,8 +1771,8 @@ CGTN阿语,https://0472.org/hls/cgtna.m3u8$LR•IPV4•8『线路8』
 重庆卫视,http://dsj.motem.top:8880/bptv/10000100000000050000000004796458.m3u8$LR•IPV4•72『线路56』
 重庆卫视,http://[2409:8087:1a01:df::7005]:80/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226409/index.m3u8$LR•IPV6•72『线路57』
 重庆卫视,http://a21709.tv.netsite.cc/proxy/562106987/562106987.m3u8$LR•IPV4•72『线路58』
-重庆卫视,http://220.192.12.20:8003/udp/225.0.4.187:7980?$LR•IPV4•72『线路59』
-重庆卫视,http://p.ytelc.com/videojs.php?id=https://sjlivecdn9.cbg.cn/202508150300/app_2/_definst_/ls_2.stream/chunklist.m3u8$LR•IPV4•72『线路60』
+重庆卫视,http://p.ytelc.com/videojs.php?id=https://sjlivecdn9.cbg.cn/202508150300/app_2/_definst_/ls_2.stream/chunklist.m3u8$LR•IPV4•72『线路59』
+重庆卫视,http://220.192.12.20:8003/udp/225.0.4.187:7980?$LR•IPV4•72『线路60』
 重庆卫视,http://39.134.65.75/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225618/index.m3u8$LR•IPV4•72『线路61』
 重庆卫视,http://148.135.93.213:81/live.php?id=重庆卫视$LR•IPV4•72『线路62』
 重庆卫视,http://php.jdshipin.com/TVOD/hnyd.php?id=200000001898/460000089800010053$LR•IPV4•72『线路63』
@@ -2443,7 +2443,7 @@ CGTN阿语,https://0472.org/hls/cgtna.m3u8$LR•IPV4•8『线路8』
 河南卫视,http://dsj.motem.top:8880/bptv/10000100000000050000000003887270.m3u8$LR•IPV4•69『线路52』
 河南卫视,http://[2409:8087:1a01:df::7005]:80/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226480/index.m3u8$LR•IPV6•69『线路53』
 河南卫视,http://a21709.tv.netsite.cc/proxy/251465659/251465659.m3u8$LR•IPV4•69『线路54』
-河南卫视,http://tvcdn.stream3.hndt.com/tv/65c4a6d5017e1000b2b6ea2500000000_transios/playlist.m3u8?wsSecret=1ad594055821b6e3784064e8a2b4af0f&wsTime=1755210948$LR•IPV4•69『线路55』
+河南卫视,http://14.29.45.87/tvcdn.stream3.hndt.com/tv/65c4a6d5017e1000b2b6ea2500000000_transios/playlist.m3u8?wsSecret=1ad594055821b6e3784064e8a2b4af0f&wsTime=1755210948&wsSession=7c51d62a9fcd0cd670e6a522-175520197310289&wsIPSercert=f1ed5e80c31ab65580d88c6bbb451005&wsiphost=local&wsBindIP=1$LR•IPV4•69『线路55』
 河南卫视,http://1.94.31.214/php/hntv.php?id=hnws$LR•IPV4•69『线路56』
 河南卫视,http://39.135.133.163/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226480/index.m3u8$LR•IPV4•69『线路57』
 河南卫视,http://148.135.93.213:81/live.php?id=河南卫视$LR•IPV4•69『线路58』
@@ -3381,7 +3381,7 @@ CGTN阿语,https://0472.org/hls/cgtna.m3u8$LR•IPV4•8『线路8』
 西藏卫视,http://[2409:8087:8:21::18]:6610/otttv.bj.chinamobile.com/PLTV/88888888/224/3221226527/1.m3u8$LR•IPV6•54『线路39』
 西藏卫视,http://dsj.motem.top:8880/bptv/10000100000000050000000003887434.m3u8$LR•IPV4•54『线路40』
 西藏卫视,http://a21709.tv.netsite.cc/proxy/1062504144/1062504144.m3u8$LR•IPV4•54『线路41』
-西藏卫视,https://tv.vtibet.cn/live/h701F9MpxzPDyE.m3u8?secret=8f901ad64f8784f167b456005bcb8267&time=689e33cb$LR•IPV4•54『线路42』
+西藏卫视,https://tv.vtibet.cn/live/h701F9MpxzPDyE.m3u8?secret=53dde91f740df1f60d0abaf48d0f2c04&time=689e41d8$LR•IPV4•54『线路42』
 西藏卫视,http://39.134.65.72/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225638/index.m3u8$LR•IPV4•54『线路43』
 西藏卫视,http://148.135.93.213:81/live.php?id=西藏卫视$LR•IPV4•54『线路44』
 西藏卫视,http://z.b.bkpcp.top/m.php?id=xzws$LR•IPV4•54『线路45』
