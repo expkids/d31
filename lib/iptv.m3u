@@ -3095,9 +3095,9 @@ http://[2409:8087:1a01:df::7005]:80/ottrrs.hl.chinamobile.com/PLTV/88888888/224/
 #EXTINF:-1 tvg-id="51" tvg-name="重庆卫视" group-title="卫视频道",重庆卫视
 http://a21709.tv.netsite.cc/proxy/562106987/562106987.m3u8$LR•IPV4•65『线路51』
 #EXTINF:-1 tvg-id="52" tvg-name="重庆卫视" group-title="卫视频道",重庆卫视
-http://220.192.12.20:8003/udp/225.0.4.187:7980?$LR•IPV4•65『线路52』
+http://p.ytelc.com/videojs.php?id=https://sjlivecdn9.cbg.cn/202508190905/app_2/_definst_/ls_2.stream/chunklist.m3u8$LR•IPV4•65『线路52』
 #EXTINF:-1 tvg-id="53" tvg-name="重庆卫视" group-title="卫视频道",重庆卫视
-http://p.ytelc.com/videojs.php?id=https://sjlivecdn9.cbg.cn/202508190905/app_2/_definst_/ls_2.stream/chunklist.m3u8$LR•IPV4•65『线路53』
+http://220.192.12.20:8003/udp/225.0.4.187:7980?$LR•IPV4•65『线路53』
 #EXTINF:-1 tvg-id="54" tvg-name="重庆卫视" group-title="卫视频道",重庆卫视
 http://39.134.65.75/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225618/index.m3u8$LR•IPV4•65『线路54』
 #EXTINF:-1 tvg-id="55" tvg-name="重庆卫视" group-title="卫视频道",重庆卫视
