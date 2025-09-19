@@ -1176,7 +1176,7 @@ CGTN阿语,https://0472.org/hls/cgtna.m3u8$LR•IPV4•6『线路6』
 浙江卫视,http://ali-m-l.cztv.com/channels/lantian/channel001/1080p.m3u8$LR•IPV4•86『线路66』
 浙江卫视,http://a21709.tv.netsite.cc/proxy/257951448/257951448.m3u8$LR•IPV4•86『线路67』
 浙江卫视,http://a21709.tv.netsite.cc/proxy/2059640241/2059640241.m3u8$LR•IPV4•86『线路68』
-浙江卫视,http://zwebl02.cztv.com/live/channel01720Pnew.m3u8?auth_key=1758308314-925d1818a047eca5cc83efd91d46f309-0-0de2c64dd28588caca7a0770356220ab$LR•IPV4•86『线路69』
+浙江卫视,http://zwebl02.cztv.com/live/channel01720Pnew.m3u8?auth_key=1758312004-57f53ed025adb2f978d66642ff0df518-0-8fd8da459eecfb346530f1baf7d25b9d$LR•IPV4•86『线路69』
 浙江卫视,http://iptv.huuc.edu.cn/hls/zjhd.m3u8$LR•IPV4•86『线路70』
 浙江卫视,http://112.27.235.94:8000/hls/29/index.m3u8$LR•IPV4•86『线路71』
 浙江卫视,http://39.134.65.71/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225612/index.m3u8$LR•IPV4•86『线路72』
