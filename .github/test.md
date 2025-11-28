@@ -30,3 +30,8 @@ https://github.com/fastbuild7099/fastbuild7099
 -
 
 https://gitee.com/PizazzXS/another-d
+
+
+https://raw.githubusercontent.com/ljlfct01/ljlfct01.github.io/main/%E8%85%BE%E4%BA%914k.js
+
+https://gitee.com/yuyu10588/tt/raw/t/t/drpy2.min.js
