@@ -777,6 +777,55 @@
 	],
 	"lives": [
 		{
+			"name": "大洋马直播",
+			"type": 0,
+			"url": "./lib/18/deyzb.m3u",
+			"ua": ""
+		},
+		{
+			"name": "大秀直播",
+			"type": 0,
+			"url": "./lib/18/dxzb.m3u",
+			"ua": ""
+		},
+		{
+			"name": "欧美直播",
+			"type": 0,
+			"url": "./lib/18/omzb.m3u",
+			"ua": ""
+		},
+		{
+			"name": "国产系列",
+			"type": 0,
+			"url": "./lib/18/hsck_gc.m3u",
+			"ua": ""
+		},
+		{
+			"name": "日韩系列",
+			"type": 0,
+			"url": "./lib/18/hsck_rh.m3u",
+			"ua": ""
+		},
+		{
+			"name": "色播聚合",
+			"type": 0,
+			"url": "./lib/18/sbjh.m3u",
+			"ua": ""
+		},
+		{
+			"name": "麻豆视频",
+			"type": 0,
+			"url": "./lib/18/mdsp.m3u",
+			"ua": ""
+		},
+		{
+			"name": "台湾成人",
+			"type": 0,
+			"url": "./lib/18/rwcr.m3u",
+			"ua": ""
+		},
+		
+		{
 			"name": "LIVEfl",
 			"type": 0,
 			"url": "https://raw.githubusercontent.com/zeee-u/lzh06/main/fl.m3u",
