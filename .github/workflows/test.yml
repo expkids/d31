@@ -50,6 +50,11 @@ jobs:
         python -m pip install --upgrade pip
         # if [ -f .github/requirements.txt ]; then pip install -r .github/requirements.txt; fi
         pip install aiohttp playwright
+
+        sudo apt-get update
+        sudo apt-get install -y libasound2t64 libgbm-dev libnotify-dev libnss3 libxss1 \
+        libxcomposite1 libxdamage1 libxrandr2 libxcursor1 libxkbcommon0 \
+        libpango-1.0-0 libcairo2 libatk1.0-0t64 libatk-bridge2.0-0t64 libcups2t64
     
     - name: Initialize chromium 
       run: |
