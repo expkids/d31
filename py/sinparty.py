@@ -65,7 +65,7 @@ async def main():
                 # 显式等待真实数据的 CSS 节点渲染到 DOM 中（最长容忍 20 秒）
                 # 统一 <div class="content-gallery content-gallery--live-listing"> 数组 和 <div class="content-gallery__item">
                 print("[*] 正在等待目标外层节点渲染: .content-gallery--live-listing .content-gallery__item")
-                await page.wait_for_selector(".content-gallery--live-listing .content-gallery__item", timeout=20000)
+                await page.wait_for_selector(".content-gallery content-gallery--live-listing", timeout=20000)
             except Exception:
                 # 如果 20 秒后目标节点仍未出现，说明确实到达了没有数据的最后一页
                 print(f"[!] 第 {page_num} 页未检测到有效在线主播数据，翻页结束。")
