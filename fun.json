@@ -825,6 +825,12 @@
 			"ua": ""
 		},
 		{
+			"name": "test",
+			"type": 0,
+			"url": "./lib/party.m3u",
+			"ua": ""
+		},
+		{
 			"name": "LIVEfl",
 			"type": 0,
 			"url": "https://raw.githubusercontent.com/zeee-u/lzh06/main/fl.m3u",
