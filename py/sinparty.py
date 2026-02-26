@@ -30,7 +30,7 @@ async def main():
     # === 阶段 1：Playwright 全站分页抓取 ===
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
-        page = await browser.new_page()
+        page = await browser.new_page(ignore_https_errors=True)
 
         page_num = 1
         while True:
@@ -74,7 +74,7 @@ async def main():
     # === 阶段 2：AIOHTTP 高性能并发抓取 m3u8 流 ===
     print(f"全站遍历完毕，共提取 {len(results)} 个直播间链接。开始高并发底层嗅探...")
     
-    connector = aiohttp.TCPConnector(limit=100)
+    connector = aiohttp.TCPConnector(limit=100, ssl=False)
     async with aiohttp.ClientSession(connector=connector) as session:
         tasks = [fetch_m3u8(session, res["name"], res["link"]) for res in results]
         m3u8_results = await asyncio.gather(*tasks)
