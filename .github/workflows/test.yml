@@ -54,7 +54,7 @@ jobs:
     - name: Initialize chromium 
       run: |
         source .venv/bin/activate
-        playwright install chromium
+        playwright install chromium --with-deps
 
     - name: Run M3U script
       run: |
