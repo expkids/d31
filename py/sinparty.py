@@ -18,10 +18,14 @@ async def fetch_m3u8(session: aiohttp.ClientSession, name: str, link: str):
                 match = re.search(r'(https?:[\\/]+[^"\'\s]+\.m3u8[^"\'\s]*)', text)
                 if match:
                     m3u8_url = match.group(1).replace('\\/', '/')
+                    # 【可视化新增】：实时输出成功嗅探到底层流的数据
+                    print(f"  [√ 流捕获] {name.ljust(15)} -> {m3u8_url}")
                     return name, m3u8_url, link
     except Exception:
         pass 
     
+    # 【可视化新增】：实时输出未命中底层流，降级处理的数据
+    print(f"  [- 未嗅探] {name.ljust(15)} -> 未发现直接 m3u8，保留原始跳转链接")
     return name, None, link
 
 async def main():
@@ -32,18 +36,20 @@ async def main():
         browser = await p.chromium.launch(headless=True)
         page = await browser.new_page(ignore_https_errors=True)
 
-        # 【核心新增】：注入反爬虫绕过脚本，抹除自动化特征，欺骗防御蜘蛛的探测
+        # 注入反爬虫绕过脚本，抹除自动化特征，欺骗防御蜘蛛的探测
         await page.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+        print("\n[*] 已挂载 Stealth 反检测脚本，webdriver 特征已抹除。")
 
         page_num = 1
         while True:
-            print(f"正在加载并抓取第 {page_num} 页数据...")
+            print(f"\n{'='*50}")
+            print(f"[*] 正在加载并抓取第 {page_num} 页数据... (URL: https://sinparty.com/?page={page_num})")
             # 动态改变 page=&& 参数
             url = f"https://sinparty.com/?page={page_num}"
             # 移除不可靠的 networkidle，使用默认导航机制
             await page.goto(url)
 
-            # 【核心新增】：强制屏蔽拦截遮罩，破坏防御弹窗，恢复“可操作、可活动、可点击”状态
+            # 强制屏蔽拦截遮罩，破坏防御弹窗，恢复“可操作、可活动、可点击”状态
             await page.add_style_tag(content='''
                 .app-modal__overlay, .modal-auth__inner { display: none !important; z-index: -9999 !important; }
                 body, html { pointer-events: auto !important; overflow: auto !important; user-select: auto !important; }
@@ -52,20 +58,23 @@ async def main():
             await page.evaluate('''() => {
                 document.querySelectorAll('.app-modal__overlay, .modal-auth__inner').forEach(el => el.remove());
             }''')
+            print("[*] 防御拦截层 (.app-modal__overlay) 已被强制物理摧毁，DOM 可点击限制已解除。")
 
             # 定位目标：跳过 skeleton 骨架屏，直接锁定在线主播节点
             try:
                 # 显式等待真实数据的 CSS 节点渲染到 DOM 中（最长容忍 20 秒）
                 # 统一 <div class="content-gallery content-gallery--live-listing"> 数组 和 <div class="content-gallery__item">
+                print("[*] 正在等待目标外层节点渲染: .content-gallery--live-listing .content-gallery__item")
                 await page.wait_for_selector(".content-gallery--live-listing .content-gallery__item", timeout=20000)
             except Exception:
                 # 如果 20 秒后目标节点仍未出现，说明确实到达了没有数据的最后一页
-                print(f"第 {page_num} 页未检测到有效在线主播数据，翻页结束。\n")
+                print(f"[!] 第 {page_num} 页未检测到有效在线主播数据，翻页结束。")
                 break
                 
             # 此时 DOM 中必定已有数据，安全执行并集提取
             # 每二次数组截胡 <div class="content-gallery__item">
             elements = await page.locator(".content-gallery--live-listing .content-gallery__item").all()
+            print(f"[*] 成功截胡当前页卡片数组，共包含 {len(elements)} 个目标节点。开始提取详细数据...")
 
             for element in elements:
                 # 抓取标题与名字：兼容 .cam-tile__title 或 .cam-tile__details
@@ -86,6 +95,9 @@ async def main():
                     if href.startswith("/"):
                         href = f"https://sinparty.com{href}"
                     
+                    # 【可视化新增】：实时输出当前从 DOM 树中剥离出来的详细键值对
+                    print(f"  [+ 数据提取] 节点: a.cam-tile | 标题: {title.strip().ljust(15)} | 跳转链: {href}")
+                    
                     results.append({
                         "name": title.strip(),
                         "link": href
@@ -96,7 +108,10 @@ async def main():
         await browser.close()
 
     # === 阶段 2：AIOHTTP 高性能并发抓取 m3u8 流 ===
-    print(f"全站遍历完毕，共提取 {len(results)} 个直播间链接。开始高并发底层嗅探...")
+    print(f"\n{'='*50}")
+    print(f"[*] 全站遍历完毕，共提取 {len(results)} 个直播间链接。")
+    print("[*] 启动 aiohttp 协程池 (TCPConnector limit=100)，开始高并发底层嗅探...")
+    print(f"{'='*50}\n")
     
     connector = aiohttp.TCPConnector(limit=100, ssl=False)
     async with aiohttp.ClientSession(connector=connector) as session:
@@ -121,13 +136,17 @@ async def main():
             
     m3u_content = "\n".join(m3u_lines)
     
-    print("\n=== 转换格式 M3U 输出 ===")
+    print(f"\n{'='*50}")
+    print("=== 转换格式 M3U 输出 ===")
     print(m3u_content)
+    print(f"{'='*50}")
     
     with open("lib/party.m3u", "w", encoding="utf-8") as f:
         f.write(m3u_content)
         
-    print(f"\n并发处理完成！成功解析 {success_count} 个底层流，总计写入 {len(results)} 条数据。")
+    print(f"\n[*] 并发处理彻底完成！")
+    print(f"[*] 成功解析并提取 {success_count} 个底层视频流。")
+    print(f"[*] 总计写入 {len(results)} 条格式化数据至 lib/party.m3u。")
 
 if __name__ == "__main__":
     asyncio.run(main())
