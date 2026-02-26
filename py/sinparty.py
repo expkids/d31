@@ -36,7 +36,7 @@ async def main():
         while True:
             print(f"正在加载并抓取第 {page_num} 页数据...")
             # 动态改变 page=&& 参数
-            url = f"https://sinparty.com/zh?page={page_num}"
+            url = f"https://sinparty.com/?page={page_num}"
             # 移除不可靠的 networkidle，使用默认导航机制
             await page.goto(url)
 
@@ -44,7 +44,7 @@ async def main():
             try:
                 # 【核心修正】：显式等待真实数据的 CSS 节点渲染到 DOM 中（最长容忍 10 秒）
                 # 统一 <div class="content-gallery content-gallery--live-listing"> 数组 和 <div class="content-gallery__item">
-                await page.wait_for_selector(".content-gallery--live-listing .content-gallery__item", timeout=10000)
+                await page.wait_for_selector(".content-gallery--live-listing .content-gallery__item", timeout=20000)
             except Exception:
                 # 如果 10 秒后目标节点仍未出现，说明确实到达了没有数据的最后一页
                 print(f"第 {page_num} 页未检测到有效在线主播数据，翻页结束。\n")
@@ -56,7 +56,7 @@ async def main():
 
             for element in elements:
                 # 抓取标题与名字：兼容 .cam-tile__title 或 .cam-tile__details
-                title_loc = element.locator(".cam-tile__title, .cam-tile__details")
+                title_loc = element.locator(".cam-tile__title")
                 if await title_loc.count() > 0:
                     title = await title_loc.first.inner_text()
                 else:
