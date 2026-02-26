@@ -36,16 +36,22 @@ async def main():
         while True:
             print(f"正在加载并抓取第 {page_num} 页数据...")
             # 动态改变 page=&& 参数
+            # 动态改变 page=&& 参数
             url = f"https://sinparty.com/zh?page={page_num}"
-            await page.goto(url, wait_until="networkidle")
+            # 移除不可靠的 networkidle，使用默认导航机制
+            await page.goto(url)
 
             # 定位目标：跳过 skeleton 骨架屏，直接锁定在线主播节点
-            # 兼容 a.cam-tile.cam-tile--online 作为独立跳转链接提取
-            elements = await page.locator("a.cam-tile.cam-tile--online").all()
-            
-            if not elements:
+            try:
+                # 【核心修正】：显式等待真实数据的 CSS 节点渲染到 DOM 中（最长容忍 10 秒）
+                await page.wait_for_selector("a.cam-tile.cam-tile--online", timeout=10000)
+            except Exception:
+                # 如果 10 秒后目标节点仍未出现，说明确实到达了没有数据的最后一页
                 print(f"第 {page_num} 页未检测到有效在线主播数据，翻页结束。\n")
                 break
+                
+            # 此时 DOM 中必定已有数据，安全执行并集提取
+            elements = await page.locator("a.cam-tile.cam-tile--online").all()
 
             for element in elements:
                 # 抓取标题与名字：兼容 .cam-tile__title 或 .cam-tile__info
