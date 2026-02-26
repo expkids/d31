@@ -5,8 +5,8 @@ permissions:
   actions: write
 
 on:
-  schedule:
-    - cron: '30 2 * * *'
+  # schedule:
+    # - cron: '30 2 * * *'
   workflow_dispatch:
 
 env:
@@ -54,7 +54,7 @@ jobs:
     - name: Initialize chromium 
       run: |
         source .venv/bin/activate
-        playwright install chromium --with-deps
+        playwright install chromium
         playwright install-deps chromium
 
     - name: Run M3U script
