@@ -12,7 +12,7 @@ async def fetch_m3u8(session: aiohttp.ClientSession, name: str, link: str):
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     }
     try:
-        async with session.get(link, headers=headers, timeout=15) as response:
+        async with session.get(link, headers=headers, timeout=120) as response:
             if response.status == 200:
                 text = await response.text()
                 match = re.search(r'(https?:[\\/]+[^"\'\s]+\.m3u8[^"\'\s]*)', text)
@@ -70,10 +70,10 @@ async def main():
 
             # 定位目标：跳过 skeleton 骨架屏，直接锁定在线主播节点
             try:
-                # 显式等待真实数据的 CSS 节点渲染到 DOM 中（最长容忍 20 秒）
+                # 显式等待真实数据的 CSS 节点渲染到 DOM 中（最长容忍 100 秒）
                 print("[*] [DOM 解析] 正在等待目标外层节点渲染: .content-gallery--live-listing ...")
                 # 修复了原来类名中间缺漏的点
-                await page.wait_for_selector(".content-gallery.content-gallery--live-listing", timeout=20000)
+                await page.wait_for_selector(".content-gallery.content-gallery--live-listing", timeout=100000)
                 print("[√] [DOM 解析] 外层数据容器已成功渲染！")
             except Exception:
                 # 如果 20 秒后目标节点仍未出现，说明确实到达了没有数据的最后一页
