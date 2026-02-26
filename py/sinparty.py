@@ -32,6 +32,9 @@ async def main():
         browser = await p.chromium.launch(headless=True)
         page = await browser.new_page(ignore_https_errors=True)
 
+        # 【核心新增】：注入反爬虫绕过脚本，抹除自动化特征，欺骗防御蜘蛛的探测
+        await page.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+
         page_num = 1
         while True:
             print(f"正在加载并抓取第 {page_num} 页数据...")
@@ -40,13 +43,23 @@ async def main():
             # 移除不可靠的 networkidle，使用默认导航机制
             await page.goto(url)
 
+            # 【核心新增】：强制屏蔽拦截遮罩，破坏防御弹窗，恢复“可操作、可活动、可点击”状态
+            await page.add_style_tag(content='''
+                .app-modal__overlay, .modal-auth__inner { display: none !important; z-index: -9999 !important; }
+                body, html { pointer-events: auto !important; overflow: auto !important; user-select: auto !important; }
+            ''')
+            # 使用 JS 直接从 DOM 树中强制物理删除这两个拦截节点
+            await page.evaluate('''() => {
+                document.querySelectorAll('.app-modal__overlay, .modal-auth__inner').forEach(el => el.remove());
+            }''')
+
             # 定位目标：跳过 skeleton 骨架屏，直接锁定在线主播节点
             try:
-                # 【核心修正】：显式等待真实数据的 CSS 节点渲染到 DOM 中（最长容忍 10 秒）
+                # 显式等待真实数据的 CSS 节点渲染到 DOM 中（最长容忍 20 秒）
                 # 统一 <div class="content-gallery content-gallery--live-listing"> 数组 和 <div class="content-gallery__item">
                 await page.wait_for_selector(".content-gallery--live-listing .content-gallery__item", timeout=20000)
             except Exception:
-                # 如果 10 秒后目标节点仍未出现，说明确实到达了没有数据的最后一页
+                # 如果 20 秒后目标节点仍未出现，说明确实到达了没有数据的最后一页
                 print(f"第 {page_num} 页未检测到有效在线主播数据，翻页结束。\n")
                 break
                 
