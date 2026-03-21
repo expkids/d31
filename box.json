@@ -1068,7 +1068,7 @@
 		{
 			"name": "cluntop_txt",
 			"type": 0,
-			"url": ".https://iptv.clun.top/txt"
+			"url": "https://iptv.clun.top/txt"
 		},
 		{
 			"name": "Mursor",
