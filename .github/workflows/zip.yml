@@ -1,4 +1,4 @@
-name: Update zip package
+name: Update zip
 
 permissions:
   contents: write
@@ -54,21 +54,21 @@ jobs:
         cd ..
         rm -rf temp_xiaosa
 
-    - name: Process Source Repo
-      run: |
-        git clone --depth 1 https://github.com/fish2018/PG.git source-repo
+    # - name: Process Source Repo
+      # run: |
+        # git clone --depth 1 https://github.com/fish2018/PG.git source-repo
         
-        cd source-repo
-        ZIP_FILE=$(find . -type f -name "pg.[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9].zip" | sort -r | head -n 1)
+        # cd source-repo
+        # ZIP_FILE=$(find . -type f -name "pg.[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9].zip" | sort -r | head -n 1)
 
-        if [ -z "$ZIP_FILE" ]; then
-          echo "Warning: No matching zip file found in Source Repo."
-        else
-          echo "Found zip file: $ZIP_FILE"
+        # if [ -z "$ZIP_FILE" ]; then
+          # echo "Warning: No matching zip file found in Source Repo."
+        # else
+          # echo "Found zip file: $ZIP_FILE"
 
-          unzip -o "$ZIP_FILE" -x "README.txt" -d ../target-repo/
-          echo "PG zip extracted to target repo."
-        fi
+          # unzip -o "$ZIP_FILE" -x "README.txt" -d ../target-repo/
+          # echo "PG zip extracted to target repo."
+        # fi
 
     - name: Commit and push changes
       working-directory: target-repo
