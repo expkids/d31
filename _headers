@@ -1,10 +1,3 @@
-# M3U Files
-/*.m3u
-  Content-Type: application/vnd.apple.mpegurl
-  Access-Control-Allow-Origin: *
-  Access-Control-Allow-Methods: GET, OPTIONS
-  Access-Control-Allow-Headers: *
-
 # EPG Files
 /*.xml
   Content-Type: application/xml; charset=utf-8
