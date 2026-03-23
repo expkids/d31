@@ -89,6 +89,13 @@
 			"filterable": 1
 		},
 		{
+			"key": "本地服务管理",
+			"name": "本地服务管理",
+			"type": 3,
+			"api": "csp_ProxySpider",
+			"ext": "ServerManager"
+		},
+		{
 			"key": "本地数据库",
 			"name": "本地数据库",
 			"type": 3,
