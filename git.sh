@@ -37,8 +37,9 @@ check_git() {
     fi
 }
 
+# 逻辑优化：使用 Git 原生命令判断是否在工作树内，比单纯判断 .git 目录更严谨（兼容子目录操作）
 check_git_repo() {
-    if [ ! -d ".git" ]; then
+    if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
         return 1
     fi
     return 0
@@ -47,6 +48,7 @@ check_git_repo() {
 # ================= 核心增强功能 =================
 
 # 1. 增强版提交 (可视化 & 自定义)
+# 遵循先提交不拉取的逻辑，避免自动合并引发混乱
 enhanced_submit() {
     title_msg "🚀 提交与推送工作流"
     if ! check_git_repo; then error_msg "当前非 Git 仓库"; return 1; fi
@@ -123,7 +125,7 @@ enhanced_pull() {
     fi
 }
 
-# 3. 分支管理 (新增功能)
+# 3. 分支管理
 manage_branches() {
     title_msg "🌿 分支管理"
     if ! check_git_repo; then error_msg "当前非 Git 仓库"; return 1; fi
@@ -147,7 +149,7 @@ manage_branches() {
     esac
 }
 
-# 4. 可视化日志 (新增功能)
+# 4. 可视化日志
 view_logs() {
     title_msg "📜 Git 提交日志"
     if ! check_git_repo; then error_msg "当前非 Git 仓库"; return 1; fi
@@ -155,7 +157,7 @@ view_logs() {
     echo -e "\n"
 }
 
-# 5. 原有功能优化 (绑定仓库、初始化、切换目录、清理)
+# 5. 绑定仓库
 bind_remote() {
     title_msg "🔗 绑定远程仓库"
     check_git_repo || return 1
@@ -171,13 +173,15 @@ bind_remote() {
     fi
 }
 
+# 6. 初始化仓库
 init_repo() {
     title_msg "📦 初始化新仓库"
-    if [ -d ".git" ]; then error_msg "当前目录已是 Git 仓库"; return 1; fi
+    if check_git_repo; then error_msg "当前目录已是 Git 仓库"; return 1; fi
     git init && git checkout -b main 2>/dev/null || git branch -M main
     success_msg "初始化完成，当前分支: main"
 }
 
+# 7. 切换工作目录
 change_dir() {
     title_msg "📁 切换工作目录"
     echo -e "当前路径: ${YELLOW}$(pwd)${NC}"
@@ -188,6 +192,7 @@ change_dir() {
     fi
 }
 
+# 8. 深度清理与空间回收
 deep_clean() {
     title_msg "🧹 深度清理与空间回收"
     check_git_repo || return 1
@@ -197,7 +202,7 @@ deep_clean() {
     success_msg "深度清理完成！当前 .git 体积: $(du -sh .git 2>/dev/null | cut -f1)"
 }
 
-# ================= 新增：单独推送功能 =================
+# 9. 单独推送功能
 push_only() {
     title_msg "📤 单独推送 (Push Only)"
     if ! check_git_repo; then error_msg "当前非 Git 仓库"; return 1; fi
@@ -217,6 +222,37 @@ push_only() {
         else
             info_msg "已取消强制推送。建议先返回主菜单执行 [2] 📥 拉取与合并。"
         fi
+    fi
+}
+
+# ================= 新增：10. 详细状态与变更分析 =================
+view_status() {
+    title_msg "🔍 详细状态与变更分析"
+    if ! check_git_repo; then error_msg "当前非 Git 仓库"; return 1; fi
+
+    echo -e "${CYAN}【1】当前工作区整体状态 (git status):${NC}"
+    git status
+    echo "------------------------------------------------"
+
+    echo -e "${YELLOW}【2】未提交的文件具体变更了什么 (git diff --stat):${NC}"
+    local diff_stat=$(git diff --stat)
+    if [ -n "$diff_stat" ]; then
+        echo "$diff_stat"
+        read -p "👉 是否展开查看具体的代码增删细节 (git diff)? (y/n): " view_diff
+        if [[ "$view_diff" =~ ^[Yy]$ ]]; then
+            # 使用 --no-pager 防止在 Android 终端中卡入 less 阅读器
+            git --no-pager diff 
+        fi
+    else
+        echo -e "${GREEN}暂无未暂存的代码变更。${NC}"
+    fi
+    echo "------------------------------------------------"
+
+    echo -e "${PURPLE}【3】最新一次提交了什么 (git show HEAD):${NC}"
+    if git rev-parse HEAD >/dev/null 2>&1; then
+        git show --stat --oneline HEAD
+    else
+        echo "当前仓库尚无任何提交记录 (No commits yet)。"
     fi
 }
 
@@ -254,6 +290,7 @@ show_dashboard() {
     echo -e " ${YELLOW}[7] 📁 切换目录 (Change Dir)${NC}"
     echo -e " ${RED}[8] 🧹 深度清理 (GC & Clean)${NC}"
     echo -e " ${PURPLE}[9] 📤 单独推送 (Push Only)${NC}"
+    echo -e " ${CYAN}[10]🔍 详细变更状态 (Status & Diff)${NC}"
     echo -e " ${BOLD}[0] ❌ 退出 (Exit)${NC}"
     echo -e "${BOLD}${BLUE}══════════════════════════════════════════════${NC}"
 }
@@ -279,6 +316,7 @@ while true; do
         7) change_dir ;;
         8) deep_clean ;;
         9) push_only ;;
+        10) view_status ;;
         0) echo "再见！"; exit 0 ;;
         *) error_msg "无效的选项，请重新输入" ;;
     esac
