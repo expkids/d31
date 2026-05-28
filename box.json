@@ -69,15 +69,6 @@
 			"ext": "./js/s/可可.json"
 		},
 		{
-			"key": "旺旺",
-			"name": "旺旺短剧",
-			"type": 1,
-			"api": "https://api.wwzy.tv/api.php/provide/vod/",
-			"playerType": 1,
-			"searchable": 1,
-			"changeable": 1
-		},
-		{
 			"key": "久久影视",
 			"name": "久久影视",
 			"type": 3,
@@ -85,37 +76,6 @@
 			"jar": "./jar/qf.jar",
 			"playerType": 2,
 			"ext": "http://99cms.jj99.icu:8199/api.php/app/"
-		},
-		{
-			"key": "艾旦影视",
-			"name": "艾旦影视",
-			"type": 1,
-			"ext": {
-				"proxy": "proxy"
-			},
-			"api": "https://www.lovedan.net/api.php/provide/vod/",
-			"quickSearch": 1,
-			"searchable": 1,
-			"changeable": 1,
-			"categories": [
-				"国产动漫",
-				"日韩动漫",
-				"国产剧"
-			]
-		},
-		{
-			"key": "四个圈影视",
-			"name": "四圈影视",
-			"type": 1,
-			"api": "https://pg.fenwe078.cf/api.php/provide/vod/",
-			"quickSearch": 1,
-			"searchable": 1,
-			"changeable": 1,
-			"categories": [
-				"国产动漫",
-				"日韩动漫",
-				"国产剧"
-			]
 		},
 		{
 			"key": "骚火影视",
@@ -173,20 +133,6 @@
 			"type": 3,
 			"api": "csp_XBPQ",
 			"ext": "./js/s/7点.json"
-		},
-		{
-			"key": "三九影视",
-			"name": "三九影视",
-			"type": 3,
-			"api": "csp_XBPQ",
-			"ext": "./XBPQ/三九影视.json"
-		},
-		{
-			"key": "巴士动漫",
-			"name": "巴士动漫",
-			"type": 3,
-			"api": "csp_XYQHiker",
-			"ext": "./XYQHiker/巴士动漫.json"
 		},
 		{
 			"key": "穷电影",
@@ -557,14 +503,14 @@
 		},
 		{
 			"key": "豆瓣资源",
-			"name": "豆瓣采集",
+			"name": "豆瓣 | 采集",
 			"type": 1,
 			"quickSearch": 1,
 			"api": "https://caiji.dbzy.tv/api.php/provide/vod/"
 		},
 		{
 			"key": "索尼",
-			"name": "索尼采集 ",
+			"name": "索尼 | 采集 ",
 			"type": 1,
 			"api": "https://suoniapi.com/api.php/provide/vod/",
 			"playUrl": "https://www.snplayer.com/?url=",
@@ -579,7 +525,7 @@
 		},
 		{
 			"key": "量子",
-			"name": "量子采集",
+			"name": "量子 | 采集",
 			"type": 1,
 			"api": "https://cj.lziapi.com/api.php/provide/vod/",
 			"playUrl": "https://lziplayer.com/?url=",
@@ -594,7 +540,7 @@
 		},
 		{
 			"key": "非凡",
-			"name": "非凡采集",
+			"name": "非凡 | 采集",
 			"type": 1,
 			"api": "https://cj.ffzyapi.com/api.php/provide/vod/?",
 			"quickSearch": 1,
@@ -608,7 +554,7 @@
 		},
 		{
 			"key": "无尽",
-			"name": "无尽采集",
+			"name": "无尽 | 采集",
 			"type": 1,
 			"api": "https://api.wujinapi.net/api.php/provide/vod/",
 			"playUrl": "https://jx.wujinkk.com/dplayer/?url=",
@@ -624,7 +570,7 @@
 		},
 		{
 			"key": "金鹰",
-			"name": "金鹰采集",
+			"name": "金鹰 | 采集",
 			"type": 1,
 			"api": "https://jyzyapi.com/api.php/provide/vod/",
 			"quickSearch": 1,
@@ -638,7 +584,7 @@
 		},
 		{
 			"key": "速播",
-			"name": "速播采集",
+			"name": "速播 | 采集",
 			"type": 1,
 			"api": "https://subocaiji.com/api.php/provide/vod/",
 			"quickSearch": 1,
@@ -652,7 +598,7 @@
 		},
 		{
 			"key": "樱花",
-			"name": "樱花采集",
+			"name": "樱花 | 采集",
 			"type": 1,
 			"api": "https://m3u8.apiyhzy.com/api.php/provide/vod/",
 			"playUrl": "https://jx.yhzybf.com/player/jx.php?url=",
@@ -667,7 +613,7 @@
 		},
 		{
 			"key": "黑木耳",
-			"name": "黑木耳",
+			"name": "黑木耳 | 采集",
 			"type": 1,
 			"api": "https://json02.heimuer.xyz/api.php/provide/vod/",
 			"playUrl": "https://hoplayer.com/index.html?url=",
@@ -680,7 +626,7 @@
 		},
 		{
 			"key": "电影天堂",
-			"name": "电影天堂",
+			"name": "电影 | 采集",
 			"type": 1,
 			"api": "http://caiji.dyttzyapi.com/api.php/provide/vod/",
 			"searchable": 1,
@@ -690,6 +636,63 @@
 				"国产动漫",
 				"日韩动漫",
 				"连续剧"
+			]
+		},
+		{
+			"key": "ikun",
+			"name": "ikun | 采集",
+			"type": 1,
+			"api": "https://ikunzyapi.com/api.php/provide/vod/",
+			"playerType": 1,
+			"searchable": 1,
+			"changeable": 1
+		},
+		{
+			"key": "暴風",
+			"name": "暴風 | 采集",
+			"type": 1,
+			"api": "https://bfzyapi.com/api.php/provide/vod/",
+			"searchable": 1,
+			"changeable": 1
+		},
+		{
+			"key": "旺旺",
+			"name": "旺旺 | 采集",
+			"type": 1,
+			"api": "https://api.wwzy.tv/api.php/provide/vod/",
+			"playerType": 1,
+			"searchable": 1,
+			"changeable": 1
+		},
+		{
+			"key": "艾旦影视",
+			"name": "艾旦 | 采集",
+			"type": 1,
+			"ext": {
+				"proxy": "proxy"
+			},
+			"api": "https://www.lovedan.net/api.php/provide/vod/",
+			"quickSearch": 1,
+			"searchable": 1,
+			"changeable": 1,
+			"categories": [
+				"国产动漫",
+				"日韩动漫",
+				"国产剧"
+			]
+		},
+		{
+			"key": "四个圈影视",
+			"name": "四圈 | 采集",
+			"type": 1,
+			"api": "https://pg.fenwe078.cf/api.php/provide/vod/",
+			"quickSearch": 1,
+			"searchable": 1,
+			"changeable": 1,
+			"categories": [
+				"国产动漫",
+				"日韩动漫",
+				"国产剧"
 			]
 		},
 		{
@@ -765,18 +768,6 @@
 		{
 			"key": "8",
 			"name": "== 8 =="
-		},
-		{
-			"key": "Hdhive",
-			"name": "影巢网盘",
-			"type": 3,
-			"api": "csp_Hdhive",
-			"quickSearch": 1,
-			"changeable": 1,
-			"filterable": 1,
-			"timeout": 60,
-			"ext": "./json/tokenm.json$$$proxy$$$1",
-			"order_num": 9999
 		}
 	],
 	"lives": [
