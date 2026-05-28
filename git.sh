@@ -385,6 +385,66 @@ deep_clean() {
     fi
 }
 
+# 12. 单独执行：恢复暂存代码 (Stash Pop)
+restore_stash() {
+    title_msg "📦 恢复暂存代码 (Git Stash Pop)"
+    if ! check_git_repo; then 
+        error_msg "当前目录非 Git 仓库"
+        return 1
+    fi
+
+    # 检查是否有 stash 记录
+    local stash_count
+    stash_count=$(git stash list | wc -l)
+    
+    if [ "$stash_count" -eq 0 ]; then
+        warn_msg "当前没有发现任何被暂存 (stash) 的代码记录。"
+        return 0
+    fi
+
+    echo -e "${CYAN}【当前的暂存记录列表 (git stash list)】${NC}"
+    git --no-pager stash list
+    echo ""
+
+    # === 新增安全防线：检测工作区是否干净 ===
+    local local_changes
+    local_changes=$(git status --porcelain)
+    if [ -n "$local_changes" ]; then
+        warn_msg "高危拦截：您的工作区目前存在未提交的修改！"
+        error_msg "此时强制释放暂存极大概率会导致覆盖报错 (Aborting)。"
+        info_msg "建议方案：请先按 [1] 暂存并 [2] 提交当前代码，然后再执行此操作。"
+        read -p "⚠ 是否仍要无视警告强行尝试释放？(y/n): " force_pop
+        if [[ ! "$force_pop" =~ ^[Yy]$ ]]; then
+            info_msg "操作已安全取消。"
+            return 0
+        fi
+    fi
+    # =======================================
+
+    read -p "检测到有 $stash_count 条暂存记录，是否立即恢复最新的一条并合并回工作区? (y/n): " pop_choice
+    if [[ "$pop_choice" =~ ^[Yy]$ ]]; then
+        info_msg "正在释放暂存区代码 (git stash pop)..."
+        
+        # 捕获恢复操作的结果
+        local pop_output
+        pop_output=$(git stash pop 2>&1)
+        local pop_status=$?
+
+        # 直接打印完整日志以便排错
+        echo -e "${CYAN}$pop_output${NC}"
+
+        if [ $pop_status -eq 0 ]; then
+            success_msg "恢复成功！您暂存的代码已安全回到工作区。"
+        elif echo "$pop_output" | grep -q "Aborting"; then
+            error_msg "恢复被 Git 中止！原因：工作区存在冲突的未保存文件。请先提交或丢弃当前更改。"
+        else
+            error_msg "恢复时产生合并冲突！请打开编辑器解决文件内的冲突标记 (<<<<<<<) 后再提交。"
+        fi
+    else
+        info_msg "已取消操作。您的代码依然安全地保留在 stash 中。"
+    fi
+}
+
 # ================= 终端前端 GUI / 菜单仪表盘 =================
 show_dashboard() {
     clear 2>/dev/null || printf '\033[2J\033[H'
@@ -427,6 +487,7 @@ show_dashboard() {
     echo -e " ${GREEN}[9] 📦 建立仓库 (Init Repo)${NC}"
     echo -e " ${YELLOW}[10] 📁 切换目录 (Change Dir)${NC}"
     echo -e " ${RED}[11] 🧹 深度清理 (Git GC)${NC}"
+    echo -e " ${PURPLE}[12] 📦 恢复暂存 (Stash Pop)${NC}"
     echo -e " ${BOLD}[0] ❌ 退出终端 (Exit)${NC}"
     echo -e "${BOLD}${BLUE}══════════════════════════════════════════════${NC}"
 }
@@ -452,6 +513,7 @@ if [ $# -gt 0 ]; then
         init)   init_repo ;;
         cd)     change_dir ;;
         clean)  deep_clean ;;
+        stash)  restore_stash ;;
         help|-h|--help)
             echo -e "${CYAN}Git Master CLI 独立模式使用指南:${NC}"
             echo -e "  add    : 暂存当前所有改动"
@@ -483,6 +545,7 @@ while true; do
         9) init_repo ;;
         10) change_dir ;;
         11) deep_clean ;;
+        12) restore_stash ;;
         0) echo "控制台已下线。"; exit 0 ;;
         *) error_msg "非法的选项指令，请确认您输入的数字有效" ;;
     esac
