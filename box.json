@@ -24,24 +24,6 @@
 			"api": "./js/荐片.js"
 		},
 		{
-			"key": "海龟",
-			"name": "海龟",
-			"type": 3,
-			"api": "./js/海龟.js"
-		},
-		{
-			"key": "鬼片之家",
-			"name": "鬼片之家",
-			"type": 3,
-			"api": "./js/鬼片之家.js"
-		},
-		{
-			"key": "永乐视频",
-			"name": "永乐视频",
-			"type": 3,
-			"api": "./js/永乐视频.js"
-		},
-		{
 			"key": "apple",
 			"name": "apple",
 			"type": 3,
@@ -62,64 +44,15 @@
 			}
 		},
 		{
-			"key": "可可影视",
-			"name": "可可影视",
-			"type": 3,
-			"api": "csp_XBPQ",
-			"ext": "./js/s/可可.json"
-		},
-		{
-			"key": "久久影视",
-			"name": "久久影视",
-			"type": 3,
-			"api": "csp_AppYsV2",
-			"jar": "./jar/qf.jar",
-			"playerType": 2,
-			"ext": "http://99cms.jj99.icu:8199/api.php/app/"
-		},
-		{
-			"key": "骚火影视",
-			"name": "骚火影视",
-			"type": 3,
-			"api": "csp_XBPQ",
-			"ext": "./js/s/骚火.json"
-		},
-		{
-			"key": "小红",
-			"name": "小红影视",
-			"type": 3,
-			"api": "csp_XBPQ",
-			"filterable": 1,
-			"ext": "./js/s/小红.json"
-		},
-		{
 			"key": "小镇",
 			"name": "小镇影视",
 			"type": 3,
 			"api": "csp_XBPQ",
 			"ext": "./js/s/小镇.json"
 		},
-		{
-			"key": "百思",
-			"name": "百思影视",
-			"type": 3,
-			"api": "csp_XBPQ",
-			"ext": "./js/s/百思.json"
-		},
-		{
-			"key": "影院",
-			"name": "影院大全",
-			"type": 3,
-			"api": "csp_XBPQ",
-			"ext": "./js/s/影院.json"
-		},
-		{
-			"key": "随客",
-			"name": "随客影视",
-			"type": 3,
-			"api": "csp_XBPQ",
-			"ext": "./js/s/随客.json"
-		},
+		
+		
+		
 		{
 			"key": "西瓜",
 			"name": "西瓜影视",
@@ -489,13 +422,6 @@
 			"type": 3,
 			"api": "csp_XBPQ",
 			"ext": "./js/s/奇迹.json"
-		},
-		{
-			"key": "素白白",
-			"name": "素白白",
-			"type": 3,
-			"api": "csp_XBPQ",
-			"ext": "./js/s/素白白.json"
 		},
 		{
 			"key": "5",
