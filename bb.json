@@ -22,14 +22,7 @@
 			"api": "csp_Ytdl",
 			"searchable": 1,
 			"quickSearch": 1,
-<<<<<<< Updated upstream
-			"ext": {
-				"proxy": "http://127.0.0.1:7890",
-				"youtub_txt": "http://clun.top/lib/youtube.json"
-			},
-=======
 			"ext": "https://clun.top/lib/youtube_aa.json",
->>>>>>> Stashed changes
 			"filterable": 1
 		},
 		{
@@ -99,11 +92,7 @@
 			"name": "阅读源so",
 			"type": 3,
 			"api": "csp_Lego",
-<<<<<<< Updated upstream
-			"ext": "http://clun.top/lib/sources.json",
-=======
 			"ext": "https://clun.top/js/sources.json",
->>>>>>> Stashed changes
 			"style": {
 				"type": "rect",
 				"ratio": 1.33
