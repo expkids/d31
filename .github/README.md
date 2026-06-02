@@ -2,8 +2,6 @@
 
 #### 群组里有 Github 通知 [频道](https://t.me/clun_tz) / [群组](https://t.me/clun_top)
 
-#### 欢迎 Star 及 PR。
-
 <details>
 <summary>贡献指南</summary>
 
