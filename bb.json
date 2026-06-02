@@ -26,10 +26,6 @@
 				"proxy": "http://127.0.0.1:7890",
 				"youtub_txt": "./lib/youtube_aa.json"
 			},
-			"style": {
-				"type": "rect",
-				"ratio": 1.33
-			},
 			"filterable": 1
 		},
 		{
