@@ -27,6 +27,8 @@
 接口 443
 账号 tvbox
 密码 tvbox
+
+如需自定义账号密码 请联系
 ```
 
 </details>
@@ -51,7 +53,15 @@ https://clun.top/fun.json
 
 ###### TVBox 张佬 接口
 ```
-https://clun.top/js/aa.json
+https://clun.top/aa.json
+```
+```
+https://clun.top/bb.json
+```
+
+###### TVBox OK 接口
+```
+https://clun.top/ok.json
 ```
 
 </details>
