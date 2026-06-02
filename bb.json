@@ -24,7 +24,7 @@
 			"quickSearch": 1,
 			"ext": {
 				"proxy": "http://127.0.0.1:7890",
-				"youtub_txt": "./lib/youtube_aa.json"
+				"youtub_txt": "http://clun.top/lib/youtube.json"
 			},
 			"filterable": 1
 		},
