@@ -24,7 +24,7 @@
 			},
 			"ext": {
 				"class": "YoutubeSpider1",
-				"ext": "PL动作片#PL科幻片#PD沙雕穿越#中国动漫#PL小说#PL宝宝巴士#新闻直播#PL动物#PL风光#放松#PD短剧#PL战争剧#萌宝短剧#经典音乐#PL海洋#太空#穿越短剧"
+				"ext": "https://clun.top/lib/youtube_aa.json"
 			},
 			"filterable": 1
 		},
