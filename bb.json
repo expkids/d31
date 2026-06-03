@@ -4,7 +4,7 @@
 	"sites": [
 		{
 			"key": "油管so",
-			"name": "油管 so",
+			"name": "油管so",
 			"type": 3,
 			"api": "csp_Ytdl",
 			"searchable": 1,
@@ -16,7 +16,7 @@
 		},
 		{
 			"key": "油管so内置",
-			"name": "油管 so 内置",
+			"name": "油管so内置",
 			"type": 3,
 			"api": "csp_Ytdl",
 			"searchable": 1,
@@ -28,7 +28,7 @@
 		},
 		{
 			"key": "听书so",
-			"name": "听书 so",
+			"name": "听书so",
 			"type": 3,
 			"api": "csp_TingShu",
 			"style": {
@@ -39,7 +39,7 @@
 		},
 		{
 			"key": "哔哩so",
-			"name": "哔哩 so",
+			"name": "哔哩so",
 			"type": 3,
 			"api": "csp_Bilibili",
 			"style": {
@@ -51,7 +51,7 @@
 		},
 		{
 			"key": "哔哩so2",
-			"name": "哔哩 so2",
+			"name": "哔哩so2",
 			"type": 3,
 			"api": "csp_Bilibili",
 			"style": {
@@ -63,7 +63,7 @@
 		},
 		{
 			"key": "华人so",
-			"name": "华人 so",
+			"name": "华人so",
 			"type": 3,
 			"api": "csp_Hua",
 			"searchable": 1,
@@ -76,7 +76,7 @@
 		},
 		{
 			"key": "捡的音乐so",
-			"name": "捡的音乐 so",
+			"name": "捡的音乐so",
 			"type": 3,
 			"api": "csp_Music1",
 			"searchable": 1,
@@ -90,7 +90,7 @@
 		},
 		{
 			"key": "阅读源so",
-			"name": "阅读源 so",
+			"name": "阅读源so",
 			"type": 3,
 			"api": "csp_Lego",
 			"ext": "./lib/sources.json",
@@ -101,7 +101,7 @@
 		},
 		{
 			"key": "本地小说so",
-			"name": "本地小说 so",
+			"name": "本地小说so",
 			"type": 3,
 			"api": "csp_NovelBd",
 			"style": {
