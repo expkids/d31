@@ -6,11 +6,11 @@
 			"type_id": "时下流行-近期热门视频"
 		},
 		{
-			"type_id": "YouTube 新聞 Live,新聞 Live",
+			"type_id": "新聞",
 			"type_name": "新聞"
 		},
 		{
-			"type_id": "LIST:音樂,华语音乐,华语MV,点击率最高",
+			"type_id": "音樂",
 			"type_name": "音樂"
 		},
 		{
@@ -18,7 +18,7 @@
 			"type_name": "短劇"
 		},
 		{
-			"type_id": "LIST:HDR,Girls HDR,Landscape HDR,Walk HDR,16K HDR",
+			"type_id": "HDR",
 			"type_name": "HDR"
 		},
 		{
@@ -50,7 +50,7 @@
 			"type_name": "动画"
 		},
 		{
-			"type_id": "LIST:綜藝,芒果綜藝,腾讯綜藝,爱奇艺綜藝,优酷綜藝,卫视綜藝",
+			"type_id": "綜藝",
 			"type_name": "綜藝"
 		},
 		{
@@ -836,7 +836,6 @@
 				"key": "tid",
 				"name": "中文",
 				"value": [
-					
 					{
 						"n": "默认",
 						"v": "animation"
@@ -972,7 +971,7 @@
 				]
 			}
 		],
-		"YouTube 新聞 Live": [
+		"新聞": [
 			{
 				"key": "tid",
 				"name": "中文",
@@ -4426,7 +4425,7 @@
 				]
 			}
 		],
-		"16K HDR": [
+		"HDR": [
 			{
 				"key": "tid",
 				"name": "風景",
@@ -4440,7 +4439,7 @@
 						"v": "hdr 大自然"
 					},
 					{
-						"n": "Links TV頻道主",
+						"n": "Links TV 頻道主",
 						"v": "@linksphotograph Links TV hdr"
 					},
 					{
