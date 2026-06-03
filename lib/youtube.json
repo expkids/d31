@@ -80,8 +80,7 @@
 		{
 			"type_id": "GETTRENDS",
 			"type_name": "Trends"
-		},
-		null
+		}
 	],
 	"filters": {
 		"短劇": [
