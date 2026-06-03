@@ -2,7 +2,7 @@
 	"recommend": "LIST:最新|推薦,官方頻道",
 	"class": [
 		{
-			"type_name": "近期热门视频",
+			"type_name": "热门",
 			"type_id": "时下流行-近期热门视频"
 		},
 		{
