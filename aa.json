@@ -24,7 +24,7 @@
 			},
 			"ext": {
 				"class": "YoutubeSpider1",
-				"ext": "https://clun.top/lib/youtube_aa.json"
+				"ext": "./lib/youtube.json"
 			},
 			"filterable": 1
 		},
@@ -40,7 +40,8 @@
 				"ratio": 1.33
 			},
 			"ext": {
-				"class": "YoutubeSpider"
+				"class": "YoutubeSpider",
+				"ext": "./lib/youtube.json"
 			},
 			"filterable": 1
 		},

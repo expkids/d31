@@ -1,44 +1,40 @@
 {
 	"recommend":"LIST:最新|推薦,官方頻道",
 	"class":[
-	 {
-      "type_name": "近期热门视频",
-      "type_id": "时下流行-近期热门视频"
-    },
 		{
-			"type_id":"YouTube 新聞 Live",
-			"type_name":"新聞直播"
+			"type_id":"GETTRENDS",
+			"type_name":"Youtube Trends"
 		},
 		{
-			"type_id":"音樂",
+			"type_id":"LIST:自媒體 We Media,老高與小茉 @laogao,脑洞乌托邦 @NDWTB,自说自话的总裁 @STBoss,纪实说 @C-Documentary,老肉雜談 @老肉雜談,李永樂老師 @TchLiyongle,滇西小哥 @dianxixiaoge,李子柒 Liziqi @cnliziqi,老饭骨 @LaoFanGu,小高姐的 Magic Ingredients @MagicIngredients,小穎美食 @XiaoYingFood,primitivetechnology9550 @primitivetechnology9550,Mr Beast@MrBeast,Airforceproud95 @Airforceproud95,TheGreatWar @TheGreatWar,Mark Rober @MarkRober,不良林,涌哥侃侃 @ygkkk,悟空的日常",
+			"type_name":"自媒體"
+		},
+		{
+			"type_id":"LIST:HDR,Girls HDR,Landscape HDR,Walk HDR",
+			"type_name":"HDR"
+		},
+		{
+			"type_id":"LIST:华语音乐,华语MV,点击率最高",
 			"type_name":"音樂"
+		},
+		{
+			"type_id":"LIST:综艺,芒果综艺,腾讯综艺,爱奇艺综艺,优酷综艺,卫视综艺",
+			"type_name":"綜藝"
+		},
+		{
+			"type_id":"LIST:紀錄片,历史纪录片,自然纪录片,宇宙纪录片",
+			"type_name":"紀錄片"
+		},
+		{
+			"type_id":"LIST:新闻 Live,体育直播,赛事直播",
+			"type_name":"新聞直播"
 		},
 		{
 			"type_id":"短劇",
 			"type_name":"短劇"
 		},
 		{
-			"type_id":"16K HDR",
-			"type_name":"16K HDR"
-		},
-		{
-			"type_id":"4K",
-			"type_name":"4K"
-		},
-		{
-			"type_id":"放松",
-			"type_name":"放松"
-		},
-		{
-			"type_id":"時尚潮流",
-			"type_name":"時尚潮流"
-		},
-		{
-			"type_id":"紀錄片",
-			"type_name":"紀錄片"
-		},
-		{
-			"type_id":"劇集",
+			"type_id":"LIST:剧集,腾讯剧集,爱奇艺剧集,优酷剧集,芒果剧集,TVB",
 			"type_name":"劇集"
 		},
 		{
@@ -46,16 +42,20 @@
 			"type_name":"電影"
 		},
 		{
-			"type_id":"动画片",
-			"type_name":"动画片"
-		},
-		{
-			"type_id":"綜藝",
-			"type_name":"綜藝"
-		},
-		{
 			"type_id":"體育",
 			"type_name":"體育"
+		},
+		{
+			"type_id":"時尚潮流",
+			"type_name":"時尚潮流"
+		},
+		{
+			"type_id":"放松",
+			"type_name":"放松"
+		},
+		{
+			"type_id":"4K",
+			"type_name":"4K"
 		},
 		{
 			"type_id":"宇宙",
@@ -66,16 +66,16 @@
 			"type_name":"科技"
 		},
 		{
-			"type_id":"LIST:自媒體 We Media,李子柒 Liziqi @cnliziqi,康1+1 @user-mr5bh4bk8z,零度解说 @lingdujieshuo,不良林,涌哥侃侃 @ygkkk,悟空的日常,Learn English with EnglishClass101.com,Speak English With Vanessa,Tangerine Academy,听笙阁 @tingshengge,老高與小茉 @laogao,李永樂老師 @TchLiyongle,滇西小哥 @dianxixiaoge,脑洞乌托邦 @NDWTB,自说自话的总裁 @STBoss,老肉雜談 @老肉雜談,老饭骨 @LaoFanGu,小高姐的 Magic Ingredients @MagicIngredients,小穎美食 @XiaoYingFood,primitivetechnology9550 @primitivetechnology9550,Mr Beast@MrBeast,Airforceproud95 @Airforceproud95,TheGreatWar @TheGreatWar,Mark Rober @MarkRober",
-			"type_name":"自媒體"
-		},
-		{
 			"type_id":"解說",
 			"type_name":"解說"
 		},
 		{
 			"type_id":"神秘",
 			"type_name":"神秘"
+		},
+		{
+			"type_id":"动画片",
+			"type_name":"动画片"
 		}
 	],
 	"filters":{
@@ -85,7 +85,6 @@
 				"name":"時間",
 				"value":[	
 					{"n":"時間全選","v":""},
-					{"n":"2025","v":"2025"},
 					{"n":"2024","v":"2024"},
 					{"n":"2023","v":"2023"},
 					{"n":"2022","v":"2022"},
@@ -187,9 +186,6 @@
 					{"n":"都市","v":"@Urbanshort-TV 都市 短劇"},
 					{"n":"爱情","v":"爱情 短劇"},
 					{"n":"复仇","v":"复仇 短劇"},
-					{"n":"霸总","v":"霸总 短劇"},
-					{"n":"萌宝","v":"萌宝 短劇"},
-					{"n":"古装","v":"古装 短劇"},
 					{"n":"穿越","v":"穿越 短劇"},
 					{"n":"喜剧","v":"喜剧 短劇"},
 					{"n":"奇幻","v":"奇幻 短劇"},
@@ -200,29 +196,7 @@
 					{"n":"嘟嘟剧场","v":"@DUDUJUCHANG"},
 					{"n":"牛牛短剧","v":"@niuniuduanju"}
 				]
-			},
-			{
-                "key": "date",
-                "name": "时间",
-                "value": [
-                    {
-                        "n": "不限",
-                        "v": ""
-                    },
-                    {
-                        "n": "当天",
-                        "v": "day"
-                    },
-                    {
-                        "n": "本周",
-                        "v": "week"
-                    },
-                    {
-                        "n": "本月",
-                        "v": "month"
-                    }
-                ]
-            }
+			}
 		],
 		"動畫片":[
 			{
@@ -332,31 +306,9 @@
 					{"n":"优酷","v":"@youkuanimation 优酷动漫"},
 					{"n":"爱奇艺","v":"@iQIYIAnime 爱奇艺动漫"}
 				]
-			},
-			{
-                "key": "date",
-                "name": "时间",
-                "value": [
-                    {
-                        "n": "不限",
-                        "v": ""
-                    },
-                    {
-                        "n": "当天",
-                        "v": "day"
-                    },
-                    {
-                        "n": "本周",
-                        "v": "week"
-                    },
-                    {
-                        "n": "本月",
-                        "v": "month"
-                    }
-                ]
-            }
+			}
 		],
-		"YouTube 新聞 Live":[
+		"LIST:新闻 Live,体育直播,赛事直播":[
 			{
 				"key":"tid",
 				"name":"中文",
@@ -364,17 +316,7 @@
 					{"n":"默认","v":"fully YouTube 新聞 Live"},
 					{"n":"赛事","v":"直播 赛事"},
 					{"n":"CCTV","v":"直播 CCTV"},
-					{"n":"港台","v":"直播 港台"},
-					{"n":"CNA","v":"@channelnewsasia"},
-					
-					{"n":"鳳凰衛視","v":"@phoenixtvhk"},
-					{"n":"CTINEWS","v":"直播 中天新闻"},
-					{"n":"TVBSEWS","v":"直播 TVBSNEWS"},
-					{"n":"新亚太唐人","v":"@NTDAPTV"},
-					{"n":"東森新聞 CH51","v":"直播 東森新聞 CH51"},
-					{"n":"三立LIVE新闻","v":"直播  三立LIVE新闻 @setnews  "},
-					{"n":"台視新聞台HD","v":"直播 台視新聞 TTV NEWS"},
-					{"n":"中視新聞 HD","v":"直播 Taiwan CTV news HD Live"}
+					{"n":"港台","v":"直播 港台"}
 				]
 			},
 			{
@@ -384,17 +326,8 @@
 					{"n":"Live","v":"live"},
 					{"n":"CNN","v":"live CNN"},
 					{"n":"BBC","v":"live BBC"},
-					{"n":"CBS","v":"@CBSNews"},
-					{"n":"ABC","v":"live ABC NEWS"},
-					{"n":"NBC","v":"@NBCNews"},
-					{"n":"LiveNOW from FOX","v":"@livenowfox"},
-					{"n":"Sky News","v":"@SkyNews"},
-					{"n":"euronews","v":"@euronews"},
-					{"n":"GBNews","v":"@GBNewsOnline"},
-					{"n":"Al Jazeera English","v":"@aljazeeraenglish"},
-					{"n":"ABCNews (Australia)","v":"@abcnewsaustralia"},
-					{"n":"FRANCE 24 English","v":"live FRANCE 24 English"},
-					{"n":"Reuters","v":"live Reuters"}
+					{"n":"games","v":"live games"},
+					{"n":"印度電視台","v":"@SETIndia"}
 				]
 			},
 			{
@@ -402,16 +335,10 @@
 				"name":"中文",
 				"value":[
 					{"n":"默认","v":"News"},
-					{"n":"News","v":"news"},
 					{"n":"时政","v":"时政 新闻"},
 					{"n":"体育","v":"体育 新闻"},
+					{"n":"娱乐","v":"娱乐 新闻"},
 					{"n":"大陆","v":"大陆 新闻"},
-					{"n":"HKTVB","v":"@tvbnewsofficial"},
-					{"n":"少康戰情室","v":" @tvbssituationroom"},
-					{"n":"政经龙凤配","v":" @觀點"},
-					{"n":"FOCUS全球新闻","v":" @TVBSNEWS FOCUS全球新闻"},
-					{"n":"新闻大白话","v":" @TVBSNEWS 新闻大白话"},
-					{"n":"东森新闻","v":"关键时刻新闻"},
 					{"n":"港台","v":"港台 新闻"}
 				]
 			},
@@ -425,31 +352,9 @@
 					{"n":"CNN","v":"CNN news"},
 					{"n":"BBC","v":"BBC news"}
 				]
-			},
-			{
-                "key": "date",
-                "name": "时间",
-                "value": [
-                    {
-                        "n": "不限",
-                        "v": ""
-                    },
-                    {
-                        "n": "当天",
-                        "v": "day"
-                    },
-                    {
-                        "n": "本周",
-                        "v": "week"
-                    },
-                    {
-                        "n": "本月",
-                        "v": "month"
-                    }
-                ]
-            }
+			}
 		],
-		"劇集":[
+		"LIST:剧集,腾讯剧集,爱奇艺剧集,优酷剧集,芒果剧集,TVB":[
 			{
 				"key":"time",
 				"name":"時間",
@@ -530,7 +435,6 @@
 				"value":[
 					{"n":"默認","v":""},
 					{"n":"華語熱播電視劇官方頻道","v":"華語熱播電視劇官方頻道"},
-					 {"n":"TVB国语","v":"TVB Drama 国语剧场"},
 					{"n":"粵劇","v":"粵劇 劇集"},
 					{"n":"TVB","v":"@TVB"},
 					{"n":"国剧放映社","v":"国剧放映社"},
@@ -568,29 +472,7 @@
 					{"n":"Japan","v":"japan Full Episode drama"},
 					{"n":"UK","v":"uk Full Episode drama"}
 				]
-			},
-			{
-                "key": "date",
-                "name": "时间",
-                "value": [
-                    {
-                        "n": "不限",
-                        "v": ""
-                    },
-                    {
-                        "n": "当天",
-                        "v": "day"
-                    },
-                    {
-                        "n": "本周",
-                        "v": "week"
-                    },
-                    {
-                        "n": "本月",
-                        "v": "month"
-                    }
-                ]
-            }
+			}
 		],
 		"電影":[
 			{
@@ -705,31 +587,9 @@
 					{"n":"Japan","v":"japan Full movie movie"},
 					{"n":"UK","v":"uk Full movie movie"}
 				]
-			},
-			{
-                "key": "date",
-                "name": "时间",
-                "value": [
-                    {
-                        "n": "不限",
-                        "v": ""
-                    },
-                    {
-                        "n": "当天",
-                        "v": "day"
-                    },
-                    {
-                        "n": "本周",
-                        "v": "week"
-                    },
-                    {
-                        "n": "本月",
-                        "v": "month"
-                    }
-                ]
-            }
+			}
 		],
-		"綜藝":[
+		"LIST:综艺,芒果综艺,腾讯综艺,爱奇艺综艺,优酷综艺,卫视综艺":[
 			{
 				"key":"time",
 				"name":"時間",
@@ -860,31 +720,9 @@
 					{"n":"严顺开","v":"严顺开"},
 					{"n":"文松","v":"文松"}
 				]
-			},
-			{
-                "key": "date",
-                "name": "时间",
-                "value": [
-                    {
-                        "n": "不限",
-                        "v": ""
-                    },
-                    {
-                        "n": "当天",
-                        "v": "day"
-                    },
-                    {
-                        "n": "本周",
-                        "v": "week"
-                    },
-                    {
-                        "n": "本月",
-                        "v": "month"
-                    }
-                ]
-            }
+			}
 		],
-		"紀錄片":[
+		"LIST:紀錄片,历史纪录片,自然纪录片,宇宙纪录片":[
 			{
 				"key":"time",
 				"name":"時間",
@@ -965,6 +803,7 @@
 				"value":[
 					{"n":"地區🎶排序","v":"歷史記錄片 地球記錄片 宇宙記錄片 海洋記錄片 戰爭記錄片 大自然生存記錄片"},
 					{"n":"默认","v":"documentary"},
+					{"n":"CCTV纪录片","v":"CCTV 纪录片"},
 					{"n":"BBC纪录片","v":"BBC 纪录片"},
 					{"n":"国家地理","v":"国家地理 纪录片"},
 					{"n":"Netflix纪录片","v":"netflix 纪录片"},
@@ -992,31 +831,9 @@
 					{"n":"Humanism","v":"Full humanism documentary"},
 					{"n":"Wars","v":"Full war documentary"}
 				]
-			},
-			{
-                "key": "date",
-                "name": "时间",
-                "value": [
-                    {
-                        "n": "不限",
-                        "v": ""
-                    },
-                    {
-                        "n": "当天",
-                        "v": "day"
-                    },
-                    {
-                        "n": "本周",
-                        "v": "week"
-                    },
-                    {
-                        "n": "本月",
-                        "v": "month"
-                    }
-                ]
-            }
+			}
 		],
-		"音樂":[
+		"LIST:华语音乐,华语MV,点击率最高":[
 			{
 				"key":"time",
 				"name":"時間",
@@ -1108,64 +925,38 @@
 					{"n":"新加坡","v":"新加坡 音乐"},
 					{"n":"馬來西亞","v":"馬來西亞 音乐"},
 					{"n":"泰國","v":"泰國 音乐"},
+					{"n":"越南","v":"越南 音乐"},
 					{"n":"印度","v":"印度 音乐"},
 					{"n":"韩国","v":"韩国 音乐"},
 					{"n":"日本","v":"日本 音乐"},
-					{"n":"欧美","v":"欧美 音乐"},
-					{"n":"时光音乐会MV","v":"时光音乐会MV"},
-					{"n":"中国好声音MV","v":"中国好声音MV"},
-					{"n":"滚石MV","v":"滚石MV"},
-					{"n":"古风MV","v":"古风MV"},
-					{"n":"韩国女团MV","v":"韩国女团MV"},
-					{"n":"欧美","v":"欧美 音乐"},
-					{"n":"BillBoard","v":"BillBoard"}
+					{"n":"欧美","v":"欧美 音乐"}
 				]
 			},
 			{
 				"key":"tid",
 				"name":"愛好",
 				"value":[
-					{"n":"合辑","v":"合辑"},
-					{"n":"超級女聲","v":"超級女聲"},
-				    {"n":"whitneyhouston","v":"@whitneyhoustonmusic"},
-				    {"n":"玛丽.凯丽","v":"@MariahCarey"},
-				    {"n":"LadyGaga","v":"@LadyGaga"},
-				    {"n":"G.E.M邓紫棋","v":"@gem0816"},
-					{"n":"麦当娜","v":"@madonna"},
-					{"n":"Taylor Swift","v":"@TaylorSwift"},
-                    {"n":"舞曲","v":"蹦迪現場 慢搖 夜店 低音 女聲 "},
+					{"n":"舞曲","v":"慢搖 夜店 低音 女聲 "},
 					{"n":"80-90","v":"80 90 音樂"},
 					{"n":"人聲","v":"人聲 音樂"},
 					{"n":"A8製造","v":"A8製造 工體音樂"},
-					{"n":"中国MTV","v":"@ChineseMusicTV"},
-					{"n":"滚石","v":"@RockRecordsTaipei"},
+					{"n":"硬歌","v":"深水炸彈 音樂"},
 					{"n":"失傳已久","v":"嗨音雷虎 失傳 嗨音會所 音樂"},
 					{"n":"重低音DJ","v":"3D 8D 慢搖 重低音 音樂"},
 					{"n":"車載舞曲","v":"車載慢搖DJ歌曲串燒 深水炸彈DJ歌曲串燒 越南鼓DJ歌曲串燒 音樂"},
 					{"n":"超級女聲","v":"超級女聲"},
-					{"n":"tseries","v":"@tseries"},
-					{"n":"戲曲","v":"秦腔 京剧 越剧 黄梅戏 评剧 豫剧 昆曲 高腔 梆子腔 河北梆子 晋剧 蒲剧 雁剧 上党梆子 武安平调 二人台 吉剧 龙江剧 越调 河南曲剧 山东梆子 淮剧 滑稽戏 婺剧 绍剧 徽剧 闽剧 莆仙戏 梨园戏 高甲戏 赣剧 采茶戏 汉剧 湘剧 祁剧 湖南花鼓戏 粤剧 潮剧 桂剧 彩调 壮剧 川剧 黔剧 滇剧 傣剧 藏剧 皮影戏"}
+					{"n":"tseries","v":"@tseries"}
 				]
 			},
 			{
 				"key":"tid",
 				"name":"歌手",
 				"value":[
-					{"n":"邓丽君","v":"邓丽君 音乐🎶"},
-                    {"n":"林忆莲","v":"林忆莲 音樂🎶"},
-					{"n":"陈慧娴","v":"陈慧娴音樂🎶"},
-					{"n":"韩宝仪","v":"韩宝仪 音樂🎶"},
-					{"n":"张学友","v":"张学友 音樂🎶"},
-					{"n":"李宗盛","v":"李宗盛 音樂🎶"},
-					{"n":"罗大佑","v":"罗大佑 音樂🎶"},
-					{"n":"周杰伦","v":"周杰伦 音樂🎶"},
-					{"n":"张惠妹","v":"张惠妹 音樂🎶"},
-					{"n":"斯琴高麗","v":"斯琴高麗 音樂🎶"},
-					{"n":"林俊杰","v":"@jjlin • 音乐🎶"},
-					{"n":"周深","v":"周深 音樂🎶"},
+					{"n":"邁克爾傑克遜","v":"邁克爾傑克遜 演唱會，巡演 音樂"},
 					{"n":"張瑋伽","v":"張瑋伽 演唱會 巡演 音樂"},
 					{"n":"孫露","v":"孫露 演唱會 巡演 音樂"},
 					{"n":"鳳凰傳奇","v":"鳳凰傳奇 演 巡演 音樂"},
+					{"n":"龍梅子","v":"龍梅子 演唱會 巡演 音樂"},
 					{"n":"刀郎","v":"刀郎 演唱會 巡演 音樂"},
 					{"n":"S.H.E","v":"S.H.E 演唱會 巡演 音樂"},
 					{"n":"慕容曉曉","v":"慕容曉曉 演唱會 巡演 音樂"},
@@ -1175,29 +966,7 @@
 					{"n":"程響","v":"程響 演唱會 巡演 音樂"},
 					{"n":"蔣雪兒","v":"蔣雪兒 演唱會 巡演 音樂"}
 				]
-			},
-			{
-                "key": "date",
-                "name": "时间",
-                "value": [
-                    {
-                        "n": "不限",
-                        "v": ""
-                    },
-                    {
-                        "n": "当天",
-                        "v": "day"
-                    },
-                    {
-                        "n": "本周",
-                        "v": "week"
-                    },
-                    {
-                        "n": "本月",
-                        "v": "month"
-                    }
-                ]
-            }
+			}
 		],
 		"體育":[
 			{
@@ -1286,7 +1055,6 @@
 					{"n":"极限運動","v":"极限運動"},
 					{"n":"室内運動","v":"室内运动"},
 					{"n":"户外運動","v":"户外运动"},
-					{"n":"瑜伽健身","v":"@kundalyoghealthylifestyle4566"},
 					{"n":"健身運動","v":"健身運動"}
 				]
 			},
@@ -1319,29 +1087,7 @@
 					{"n":"體育之光","v":"體育之光"},
 					{"n":"偶然體育賽事","v":"偶然體育賽事"}
 				]
-			},
-			{
-                "key": "date",
-                "name": "时间",
-                "value": [
-                    {
-                        "n": "不限",
-                        "v": ""
-                    },
-                    {
-                        "n": "当天",
-                        "v": "day"
-                    },
-                    {
-                        "n": "本周",
-                        "v": "week"
-                    },
-                    {
-                        "n": "本月",
-                        "v": "month"
-                    }
-                ]
-            }
+			}
 		],
 		"時尚潮流":[
 			{
@@ -1400,29 +1146,7 @@
 					{"n":"Miss Universe","v":"Miss Universe"},
 					{"n":"Thai Shemale","v":"Thai Shemale"}
 				]
-			},
-			{
-                "key": "date",
-                "name": "时间",
-                "value": [
-                    {
-                        "n": "不限",
-                        "v": ""
-                    },
-                    {
-                        "n": "当天",
-                        "v": "day"
-                    },
-                    {
-                        "n": "本周",
-                        "v": "week"
-                    },
-                    {
-                        "n": "本月",
-                        "v": "month"
-                    }
-                ]
-            }
+			}
 		],
 		"解說":[
 			{
@@ -1432,31 +1156,9 @@
 					{"n":"宇哥侃故事","v":"@yuge"},
 					{"n":"零度解说","v":"@lingdujieshuo"}
 				]
-			},
-			{
-                "key": "date",
-                "name": "时间",
-                "value": [
-                    {
-                        "n": "不限",
-                        "v": ""
-                    },
-                    {
-                        "n": "当天",
-                        "v": "day"
-                    },
-                    {
-                        "n": "本周",
-                        "v": "week"
-                    },
-                    {
-                        "n": "本月",
-                        "v": "month"
-                    }
-                ]
-            }
+			}
 		],
-		"16K HDR":[
+		"LIST:HDR,Girls HDR,Landscape HDR,Walk HDR":[
 			{
 				"key":"tid",
 				"name":"風景",
@@ -1517,29 +1219,7 @@
 					{"n":"涌哥侃侃","v":"涌哥侃侃 @ygkkk"},
 					{"n":"悟空的日常","v":"悟空的日常"}
 				]
-			},
-			{
-                "key": "date",
-                "name": "时间",
-                "value": [
-                    {
-                        "n": "不限",
-                        "v": ""
-                    },
-                    {
-                        "n": "当天",
-                        "v": "day"
-                    },
-                    {
-                        "n": "本周",
-                        "v": "week"
-                    },
-                    {
-                        "n": "本月",
-                        "v": "month"
-                    }
-                ]
-            }
+			}
 		],
 		"宇宙":[
 			{
