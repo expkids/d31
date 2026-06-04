@@ -986,7 +986,8 @@
 			"jar": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/FongMi/CatVodSpider/main/jar/custom_spider.jar"
 		}
 	],
+	"spider": "./jar/pro.jar;md5;./jar/pro.jar.md5",
+	"disabled_wallpaper": "./img/0.jpg",
 	"wallpaper": "./img/0.jpg",
-	"spider": "./jar/pro.jar",
-	"logo": ""
+	"logo": "./img/loadin.gif"
 }
