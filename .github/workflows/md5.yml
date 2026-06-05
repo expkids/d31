@@ -1,9 +1,9 @@
-name: Auto Update JS and JAR MD5
+name: Auto Update MD5
 
 on:
   # 监听代码推送
   push:
-    # 只有当 .js 文件发生变化时才触发，避免无意义运行
+    # 只有当 .js 和 .jar 文件发生变化时才触发，避免无意义运行
     paths:
       - '**.js'
       - '**.jar'
@@ -40,7 +40,7 @@ jobs:
       - name: Commit & Push Changes
         run: |
           # Configure bot identity
-          git config --global user.name "github-actions[bot]"
+          git config --global user.name "github-actions"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           # Stage both js and jar md5 files
