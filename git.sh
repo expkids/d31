@@ -8,7 +8,7 @@
 # ================= 配置区 =================
 # 专属 Github 仓库地址与日志绝对路径 (请勿随意修改)
 MY_REPO_URL="https://github.com/cluntop/tvbox.git"
-LOG_FILE="/data/data/bin.mt.plus/home/tvbox/.github/git.log"
+LOG_FILE="/storage/emulated/0/box/.github/git.log"
 
 # ================= 颜色与样式 =================
 RED='\033[0;31m'
@@ -96,8 +96,10 @@ do_add() {
     # 单独校验执行结果
     if [ $? -eq 0 ]; then
         success_msg "所有变更已成功加入暂存区！"
+        return 0
     else
         error_msg "暂存失败，请检查文件权限。"
+        return 1
     fi
 }
 
@@ -128,8 +130,10 @@ do_commit() {
     
     if [ $? -eq 0 ]; then
         success_msg "版本快照生成完毕！"
+        return 0
     else
         error_msg "提交失败，请检查配置或终端输出。"
+        return 1
     fi
 }
 
@@ -154,21 +158,24 @@ do_push() {
     # 根据状态码判断推送是否成功
     if [ $? -eq 0 ]; then
         success_msg "代码已成功同步至云端！"
+        return 0
     else
         warn_msg "常规推送被拒绝。远程仓库可能包含您本地没有的更改。"
         read -p "⚠ 是否执行安全强制推送 (使用 --force-with-lease 避免误覆盖他人代码)? (y/n): " force_push
         if [[ "$force_push" =~ ^[Yy]$ ]]; then
             info_msg "启动安全覆盖协议 (git push --force-with-lease) ..."
-            # 使用更现代、更安全的 force-with-lease 替代危险的 -f
             git push --force-with-lease --set-upstream origin "$curr"
             
             if [ $? -eq 0 ]; then
                 success_msg "安全强推成功！远程状态已被本地更新覆盖。"
+                return 0
             else
                 error_msg "强推失败，可能存在更严重的冲突或网络问题。"
+                return 1
             fi
         else
             info_msg "操作已取消。建议先执行拉取操作。"
+            return 1
         fi
     fi
 }
@@ -209,13 +216,13 @@ do_pull() {
     
     if [ $? -eq 0 ]; then
         success_msg "拉取成功，本地已是最新版本。"
+        if [[ "$stash_choice" =~ ^[Yy]$ ]]; then
+            warn_msg "请记得手动执行 'git stash pop' 来恢复您刚才暂存的本地代码。"
+        fi
+        return 0
     else
         error_msg "拉取过程产生冲突或网络连接失败。"
-    fi
-
-    # 如果刚才暂存了代码，提示恢复
-    if [[ "$stash_choice" =~ ^[Yy]$ ]]; then
-        warn_msg "请记得手动执行 'git stash pop' 来恢复您刚才暂存的本地代码。"
+        return 1
     fi
 }
 
@@ -239,32 +246,36 @@ manage_branches() {
         1) 
             read -p "请输入新分支名称 (无空格): " b_name
             if [ -n "$b_name" ]; then
-                # 现代命令：使用 switch -c 替代 checkout -b
                 git switch -c "$b_name"
                 if [ $? -eq 0 ]; then
                     success_msg "已创建并切换至新分支: $b_name"
+                    return 0
                 else
                     error_msg "分支创建失败"
+                    return 1
                 fi
             fi
             ;;
         2) 
             read -p "请输入目标分支名称: " b_name
             if [ -n "$b_name" ]; then
-                # 现代命令：使用 switch 替代 checkout
                 git switch "$b_name"
                 if [ $? -eq 0 ]; then
                     success_msg "成功切换至分支: $b_name"
+                    return 0
                 else
                     error_msg "分支切换失败"
+                    return 1
                 fi
             fi
             ;;
         3) 
             info_msg "操作取消"
+            return 0
             ;;
         *)
             error_msg "无效选项"
+            return 1
             ;;
     esac
 }
@@ -285,16 +296,18 @@ bind_remote() {
     
     read -p "确认将本地仓库指向预设目标地址吗? (y/n): " confirm
     if [[ "$confirm" =~ ^[Yy]$ ]]; then
-        # 分离执行删除和添加，避免合并逻辑隐患
         git remote remove origin 2>/dev/null
         git remote add origin "$MY_REPO_URL"
         
         if [ $? -eq 0 ]; then
             success_msg "远程源绑定成功！"
+            return 0
         else
             error_msg "绑定失败，请检查权限。"
+            return 1
         fi
     fi
+    return 0
 }
 
 # 7. 现代版：初始化仓库
@@ -305,13 +318,14 @@ init_repo() {
         return 1
     fi
     
-    # 现代命令：直接在初始化时指定默认主分支为 main (Git 2.28+)
     git init --initial-branch=main
     
     if [ $? -eq 0 ]; then
         success_msg "仓库初始化完毕！默认主分支已设为: main"
+        return 0
     else
         error_msg "初始化失败"
+        return 1
     fi
 }
 
@@ -322,9 +336,9 @@ view_logs() {
         error_msg "当前目录非 Git 仓库"
         return 1
     fi
-    # 限制显示 15 条
     git --no-pager log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -n 15
     echo -e "\n"
+    return 0
 }
 
 # 9. 状态剖析与明细
@@ -346,6 +360,7 @@ view_status() {
     echo -e "${CYAN}【已放入暂存区待提交的代码变动 (git diff --cached)】${NC}"
     git --no-pager diff --cached
     echo ""
+    return 0
 }
 
 # 10. 系统操作：切换目录
@@ -358,12 +373,14 @@ change_dir() {
             mkdir -p "$new_path" 2>/dev/null
         fi
         
-        cd "$new_path" || error_msg "无法进入指定路径"
+        cd "$new_path" || { error_msg "无法进入指定路径"; return 1; }
         
         if [ "$(pwd)" = "$new_path" ] || [ "$(pwd)" = "$(realpath "$new_path" 2>/dev/null)" ]; then
             success_msg "系统位置已成功转移至: $(pwd)"
+            return 0
         fi
     fi
+    return 0
 }
 
 # 11. 系统操作：深度清理
@@ -380,8 +397,10 @@ deep_clean() {
     
     if [ $? -eq 0 ]; then
         success_msg "清理成功！当前 .git 体积为: $(du -sh .git 2>/dev/null | cut -f1)"
+        return 0
     else
         error_msg "清理任务中断或失败。"
+        return 1
     fi
 }
 
@@ -393,7 +412,6 @@ restore_stash() {
         return 1
     fi
 
-    # 检查是否有 stash 记录
     local stash_count
     stash_count=$(git stash list | wc -l)
     
@@ -406,7 +424,6 @@ restore_stash() {
     git --no-pager stash list
     echo ""
 
-    # === 新增安全防线：检测工作区是否干净 ===
     local local_changes
     local_changes=$(git status --porcelain)
     if [ -n "$local_changes" ]; then
@@ -419,30 +436,110 @@ restore_stash() {
             return 0
         fi
     fi
-    # =======================================
 
     read -p "检测到有 $stash_count 条暂存记录，是否立即恢复最新的一条并合并回工作区? (y/n): " pop_choice
     if [[ "$pop_choice" =~ ^[Yy]$ ]]; then
         info_msg "正在释放暂存区代码 (git stash pop)..."
         
-        # 捕获恢复操作的结果
         local pop_output
         pop_output=$(git stash pop 2>&1)
         local pop_status=$?
 
-        # 直接打印完整日志以便排错
         echo -e "${CYAN}$pop_output${NC}"
 
         if [ $pop_status -eq 0 ]; then
             success_msg "恢复成功！您暂存的代码已安全回到工作区。"
+            return 0
         elif echo "$pop_output" | grep -q "Aborting"; then
             error_msg "恢复被 Git 中止！原因：工作区存在冲突的未保存文件。请先提交或丢弃当前更改。"
+            return 1
         else
             error_msg "恢复时产生合并冲突！请打开编辑器解决文件内的冲突标记 (<<<<<<<) 后再提交。"
+            return 1
         fi
     else
         info_msg "已取消操作。您的代码依然安全地保留在 stash 中。"
+        return 0
     fi
+}
+
+# 13. 新增：一键自动化工作流 (Pull -> Stash Pop -> Add -> Commit -> Push)
+do_one_click() {
+    title_msg "⚡ 执行一键同步工作流"
+    if ! check_git_repo; then 
+        error_msg "当前目录非 Git 仓库"
+        return 1
+    fi
+
+    local curr
+    curr=$(git branch --show-current 2>/dev/null)
+    if [ -z "$curr" ]; then curr="main"; fi
+
+    # 1. 尝试拉取 (Pull)
+    info_msg "[1/5] 正在拉取远程更新 (Git Pull)..."
+    local pull_out
+    # 捕获原生输出和错误
+    pull_out=$(git pull origin "$curr" 2>&1)
+    if [ $? -ne 0 ]; then
+        error_msg "拉取失败！Git 报错原因如下："
+        echo -e "${RED}$pull_out${NC}"
+        return 1
+    fi
+
+    # 2. 尝试恢复暂存 (Stash Pop)
+    local stash_count
+    stash_count=$(git stash list | wc -l)
+    if [ "$stash_count" -gt 0 ]; then
+        info_msg "[2/5] 发现暂存记录，正在恢复 (Git Stash Pop)..."
+        local pop_out
+        pop_out=$(git stash pop 2>&1)
+        if [ $? -ne 0 ]; then
+            error_msg "恢复暂存失败！Git 报错原因如下："
+            echo -e "${RED}$pop_out${NC}"
+            return 1
+        fi
+    else
+        info_msg "[2/5] 无暂存记录，自动跳过恢复。"
+    fi
+
+    # 3. 暂存所有变更 (Add)
+    info_msg "[3/5] 正在追踪变动文件 (Git Add)..."
+    local add_out
+    add_out=$(git add . 2>&1)
+    if [ $? -ne 0 ]; then
+        error_msg "暂存文件失败！Git 报错原因如下："
+        echo -e "${RED}$add_out${NC}"
+        return 1
+    fi
+
+    # 4. 提交快照 (Commit)
+    info_msg "[4/5] 正在生成快照 (Git Commit)..."
+    # 如果有可提交的改动才执行 commit
+    if ! git diff --cached --quiet; then
+        local commit_out
+        # 自动化提交，附带时间戳
+        commit_out=$(git commit -m "Auto Sync: $(date '+%Y-%m-%d %H:%M:%S')" 2>&1)
+        if [ $? -ne 0 ]; then
+            error_msg "提交代码失败！Git 报错原因如下："
+            echo -e "${RED}$commit_out${NC}"
+            return 1
+        fi
+    else
+        warn_msg "工作区没有需要提交的新变动，继续下一步。"
+    fi
+
+    # 5. 推送至云端 (Push)
+    info_msg "[5/5] 正在推送至云端 (Git Push)..."
+    local push_out
+    push_out=$(git push origin "$curr" 2>&1)
+    if [ $? -ne 0 ]; then
+        error_msg "推送失败！Git 报错原因如下："
+        echo -e "${RED}$push_out${NC}"
+        return 1
+    fi
+
+    success_msg "🎉 一键同步工作流全部执行成功！"
+    return 0
 }
 
 # ================= 终端前端 GUI / 菜单仪表盘 =================
@@ -475,7 +572,6 @@ show_dashboard() {
     fi
     echo -e "${BOLD}${BLUE}──────────────────────────────────────────────${NC}"
     
-    # 菜单打散为独立功能
     echo -e " ${YELLOW}[1] 📝 暂存变动 (Git Add)${NC}"
     echo -e " ${GREEN}[2] 📦 创建快照 (Git Commit)${NC}"
     echo -e " ${CYAN}[3] 🚀 推送云端 (Git Push)${NC}"
@@ -488,6 +584,7 @@ show_dashboard() {
     echo -e " ${YELLOW}[10] 📁 切换目录 (Change Dir)${NC}"
     echo -e " ${RED}[11] 🧹 深度清理 (Git GC)${NC}"
     echo -e " ${PURPLE}[12] 📦 恢复暂存 (Stash Pop)${NC}"
+    echo -e " ${BOLD}${YELLOW}[13] ⚡ 一键同步 (Pull>Pop>Add>Commit>Push)${NC}"
     echo -e " ${BOLD}[0] ❌ 退出终端 (Exit)${NC}"
     echo -e "${BOLD}${BLUE}══════════════════════════════════════════════${NC}"
 }
@@ -514,14 +611,13 @@ if [ $# -gt 0 ]; then
         cd)     change_dir ;;
         clean)  deep_clean ;;
         stash)  restore_stash ;;
+        sync)   do_one_click ;;
         help|-h|--help)
             echo -e "${CYAN}Git Master CLI 独立模式使用指南:${NC}"
             echo -e "  add    : 暂存当前所有改动"
             echo -e "  commit : 为暂存的内容创建快照"
             echo -e "  push   : 将本地提交推送到远程仓库"
-            echo -e "  pull   : 拉取并合并最新代码"
-            echo -e "  branch : 分支操作"
-            echo -e "  status : 查看仓库状态"
+            echo -e "  sync   : 执行一键同步"
             echo -e "  ...其他命令见菜单"
             ;;
         *) error_msg "未识别的参数: $1" ;;
@@ -533,22 +629,35 @@ fi
 while true; do
     show_dashboard
     read -p "👉 键入数字并回车: " choice
+    
+    # 标记是否需要等待用户按下回车键 (默认需要)
+    require_pause=true
+    
     case $choice in
-        1) do_add ;;
-        2) do_commit ;;
-        3) do_push ;;
-        4) do_pull ;;
-        5) manage_branches ;;
+        1) do_add; [ $? -eq 0 ] && require_pause=false ;;
+        2) do_commit; [ $? -eq 0 ] && require_pause=false ;;
+        3) do_push; [ $? -eq 0 ] && require_pause=false ;;
+        4) do_pull; [ $? -eq 0 ] && require_pause=false ;;
+        5) manage_branches ;; # 分支和查看类信息保持暂停，避免文字闪过
         6) view_status ;;
         7) view_logs ;;
-        8) bind_remote ;;
-        9) init_repo ;;
-        10) change_dir ;;
-        11) deep_clean ;;
-        12) restore_stash ;;
+        8) bind_remote; [ $? -eq 0 ] && require_pause=false ;;
+        9) init_repo; [ $? -eq 0 ] && require_pause=false ;;
+        10) change_dir; [ $? -eq 0 ] && require_pause=false ;;
+        11) deep_clean; [ $? -eq 0 ] && require_pause=false ;;
+        12) restore_stash; [ $? -eq 0 ] && require_pause=false ;;
+        13) do_one_click; [ $? -eq 0 ] && require_pause=false ;;
         0) echo "控制台已下线。"; exit 0 ;;
         *) error_msg "非法的选项指令，请确认您输入的数字有效" ;;
     esac
+    
     echo ""
-    read -p "按 [Enter] 键继续..."
+    if [ "$require_pause" = true ]; then
+        # 失败、或者执行查看类操作时，要求按回车以便查阅终端内容
+        read -p "按 [Enter] 键继续..."
+    else
+        # 成功完成操作时，停留一小会儿让用户看清成功提示，然后自动刷新面板
+        info_msg "操作成功完成，即将自动返回主菜单..."
+        sleep 1.5 
+    fi
 done
