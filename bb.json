@@ -2,7 +2,7 @@
 	"sites": [
 		{
 			"key": "油管so",
-			"name": "油管so",
+			"name": "油管视频",
 			"type": 3,
 			"api": "csp_Ytdl",
 			"searchable": 1,
@@ -15,37 +15,10 @@
 				"youtube_txt": "./lib/youtube.json"
 			},
 			"filterable": 1
-		},
-		{
-			"key": "油管so内置",
-			"name": "油管so内置",
-			"type": 3,
-			"api": "csp_Ytdl",
-			"searchable": 1,
-			"quickSearch": 1,
-			"style": {
-				"type": "rect",
-				"ratio": 1.33
-			},
-			"ext": {
-				"youtube_txt": "./lib/youtube.json"
-			},
-			"filterable": 1
-		},
-		{
-			"key": "听书so",
-			"name": "听书so",
-			"type": 3,
-			"api": "csp_TingShu",
-			"style": {
-				"type": "rect",
-				"ratio": 1.33
-			},
-			"changeable": 1
 		},
 		{
 			"key": "哔哩so",
-			"name": "哔哩so",
+			"name": "哔哩哔哩",
 			"type": 3,
 			"api": "csp_Bilibili",
 			"style": {
@@ -56,15 +29,14 @@
 			"changeable": 1
 		},
 		{
-			"key": "哔哩so2",
-			"name": "哔哩so2",
+			"key": "听书so",
+			"name": "听书so",
 			"type": 3,
-			"api": "csp_Bilibili",
+			"api": "csp_TingShu",
 			"style": {
 				"type": "rect",
 				"ratio": 1.33
 			},
-			"ext": "./lib/bili.json",
 			"changeable": 1
 		},
 		{
@@ -131,21 +103,6 @@
 	],
 	"proxy": [
 		{
-			"name": "TW-4GTV",
-			"hosts": [
-				"hinet.net",
-				"cdn.hinet.net",
-				"4gtv.tv",
-				".*boku.*",
-				".*nivod.*",
-				".*ulivetv.*",
-				"infini.money"
-			],
-			"urls": [
-				"http://127.0.0.7890"
-			]
-		},
-		{
 			"name": "YouTube",
 			"hosts": [
 				"youtube.com",
@@ -163,32 +120,7 @@
 				"nhacmp3youtube.com"
 			],
 			"urls": [
-				"http://127.0.0.1:7890"
-			]
-		},
-		{
-			"name": "stream",
-			"hosts": [
-				"stream1.freetv.fun",
-				"stream-link.org",
-				"infini.money"
-			],
-			"urls": [
-				"http://127.0.0.1:7890",
-				"https://127.0.0.1:7890"
-			]
-		},
-		{
-			"name": "US",
-			"hosts": [
-				"playouts.now.amagi.tv",
-				"rastamusic.streamguys1.com",
-				"tunein.cdnstream1.com",
-				"prd.pluto.tv"
-			],
-			"urls": [
-				"http://127.0.0.1:7890",
-				"https://127.0.0.1:7890"
+				"http://127.0.0.1988"
 			]
 		}
 	],

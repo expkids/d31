@@ -436,60 +436,36 @@
 			"name": "索尼 | 采集 ",
 			"type": 1,
 			"api": "https://suoniapi.com/api.php/provide/vod/",
-			"playUrl": "https://www.snplayer.com/?url=",
 			"quickSearch": 1,
 			"searchable": 1,
-			"changeable": 1,
-			"categories": [
-				"国产动漫",
-				"日韩动漫",
-				"国产剧"
-			]
+			"changeable": 1
 		},
 		{
 			"key": "量子",
 			"name": "量子 | 采集",
 			"type": 1,
 			"api": "https://cj.lziapi.com/api.php/provide/vod/",
-			"playUrl": "https://lziplayer.com/?url=",
 			"quickSearch": 1,
 			"searchable": 1,
-			"changeable": 1,
-			"categories": [
-				"国产动漫",
-				"日韩动漫",
-				"国产剧"
-			]
+			"changeable": 1
 		},
 		{
 			"key": "非凡",
 			"name": "非凡 | 采集",
 			"type": 1,
-			"api": "https://cj.ffzyapi.com/api.php/provide/vod/?",
+			"api": "https://cj.ffzyapi.com/api.php/provide/vod/",
 			"quickSearch": 1,
 			"searchable": 1,
-			"changeable": 1,
-			"categories": [
-				"国产动漫",
-				"日韩动漫",
-				"国产剧"
-			]
+			"changeable": 1
 		},
 		{
 			"key": "无尽",
 			"name": "无尽 | 采集",
 			"type": 1,
 			"api": "https://api.wujinapi.net/api.php/provide/vod/",
-			"playUrl": "https://jx.wujinkk.com/dplayer/?url=",
 			"quickSearch": 1,
 			"searchable": 1,
-			"changeable": 1,
-			"categories": [
-				"国产动漫",
-				"日韩动漫",
-				"国产剧",
-				"预告片"
-			]
+			"changeable": 1
 		},
 		{
 			"key": "金鹰",
@@ -498,12 +474,7 @@
 			"api": "https://jyzyapi.com/api.php/provide/vod/",
 			"quickSearch": 1,
 			"searchable": 1,
-			"changeable": 1,
-			"categories": [
-				"中国动漫",
-				"日本动漫",
-				"内地剧"
-			]
+			"changeable": 1
 		},
 		{
 			"key": "速播",
@@ -512,40 +483,23 @@
 			"api": "https://subocaiji.com/api.php/provide/vod/",
 			"quickSearch": 1,
 			"searchable": 1,
-			"changeable": 1,
-			"categories": [
-				"中国动漫",
-				"日本动漫",
-				"大陆剧"
-			]
+			"changeable": 1
 		},
 		{
 			"key": "樱花",
 			"name": "樱花 | 采集",
 			"type": 1,
 			"api": "https://m3u8.apiyhzy.com/api.php/provide/vod/",
-			"playUrl": "https://jx.yhzybf.com/player/jx.php?url=",
 			"quickSearch": 1,
 			"searchable": 1,
-			"changeable": 1,
-			"categories": [
-				"国产动漫",
-				"日本动漫",
-				"国产剧"
-			]
+			"changeable": 1
 		},
 		{
 			"key": "黑木耳",
 			"name": "黑木耳 | 采集",
 			"type": 1,
 			"api": "https://json02.heimuer.xyz/api.php/provide/vod/",
-			"playUrl": "https://hoplayer.com/index.html?url=",
-			"quickSearch": 1,
-			"categories": [
-				"国产动漫",
-				"日本动漫",
-				"国产剧"
-			]
+			"quickSearch": 1
 		},
 		{
 			"key": "电影天堂",
@@ -554,12 +508,7 @@
 			"api": "http://caiji.dyttzyapi.com/api.php/provide/vod/",
 			"searchable": 1,
 			"quickSearch": 1,
-			"changeable": 0,
-			"categories": [
-				"国产动漫",
-				"日韩动漫",
-				"连续剧"
-			]
+			"changeable": 0
 		},
 		{
 			"key": "ikun",
@@ -597,12 +546,7 @@
 			"api": "https://www.lovedan.net/api.php/provide/vod/",
 			"quickSearch": 1,
 			"searchable": 1,
-			"changeable": 1,
-			"categories": [
-				"国产动漫",
-				"日韩动漫",
-				"国产剧"
-			]
+			"changeable": 1
 		},
 		{
 			"key": "四个圈影视",
@@ -611,12 +555,7 @@
 			"api": "https://pg.fenwe078.cf/api.php/provide/vod/",
 			"quickSearch": 1,
 			"searchable": 1,
-			"changeable": 1,
-			"categories": [
-				"国产动漫",
-				"日韩动漫",
-				"国产剧"
-			]
+			"changeable": 1
 		},
 		{
 			"key": "6",
@@ -629,7 +568,7 @@
 			"api": "./py/yymp3.py"
 		},
 		{
-			"key": "hipy_js_KTV歌厅[听]1",
+			"key": "js_KTV歌厅",
 			"name": "KTV歌厅",
 			"type": 3,
 			"api": "./lib/drpy2.min.js",
@@ -677,18 +616,6 @@
 			"playerType": 2
 		},
 		{
-			"key": "哆啦",
-			"name": "哆啦｜新番社",
-			"type": 3,
-			"api": "csp_XBPQ",
-			"quickSearch": 1,
-			"filterable": 1,
-			"style": {
-				"type": "list"
-			},
-			"ext": "./XBPQ/哆啦新番社.json"
-		},
-		{
 			"key": "8",
 			"name": "== 8 =="
 		}
@@ -705,84 +632,47 @@
 			"url": "./lib/iptv_test.m3u"
 		},
 		{
-			"name": "YY 轮播",
+			"name": "歌手直播",
 			"type": 0,
-			"url": "https://iptv.clun.top/yylunbo.m3u",
-			"playerType": 2,
-			"timeout": 15
-		},
-		{
-			"name": "4GTV",
-			"type": 0,
-			"url": "./lib/4gtv.txt"
-		},
-		{
-			"name": "Mursor",
-			"type": "0",
-			"url": "https://raw.githubusercontent.com/Mursor/LIVE/main/iptv.m3u",
-			"playerType": 2,
-			"timeout": 10,
-			"ua": "okHttp/Mod-1.5.0.0"
-		},
-		{
-			"name": "tv_jp",
-			"type": "0",
-			"url": "https://gh.clun.top/raw.githubusercontent.com/luongz/iptv-jp/main/jp.m3u"
-		},
-		{
-			"name": "tv_jp_clean",
-			"type": "0",
-			"url": "https://gh.clun.top/raw.githubusercontent.com/luongz/iptv-jp/main/jp_clean.m3u"
+			"url": "https://mgtv.ottiptv.cc/mglist.m3u",
+			"ua": "okhttp/3.15",
+			"playerType": 2
 		},
 		{
 			"name": "平台直播",
 			"type": 0,
 			"url": "https://tv.iill.top/m3u/Live",
 			"ua": "okhttp/3.15",
-			"playerType": 2
-		},
-		{
-			"name": "冰茶 TV",
-			"type": 0,
-			"url": "https://fy.188766.xyz/?ip=&mishitong=true&mima=mianfeidehaimaiqian&json=true",
-			"ua": "bingcha/1.1"
-		},
-		{
-			"name": "肥羊虎牙一起看",
-			"type": 0,
-			"url": "https://gh.clun.top/raw.githubusercontent.com/mursor1985/LIVE/main/huyayqk.m3u",
 			"playerType": 2,
-			"timeout": 10,
-			"ua": "okHttp/Mod-1.5.0.0"
+			"timeout": 10
 		},
 		{
-			"name": "肥羊B站直播",
+			"name": "虎牙一起看",
 			"type": 0,
-			"url": "https://gh.clun.top/raw.githubusercontent.com/mursor1985/LIVE/main/bililive.m3u",
+			"url": "https://sub.ottiptv.cc/huyayqk.m3u",
 			"playerType": 2,
-			"timeout": 10,
-			"ua": "okHttp/Mod-1.5.0.0"
+			"timeout": 10
 		},
 		{
-			"name": "肥羊斗鱼一起看",
+			"name": "斗鱼一起看",
 			"type": 0,
-			"url": "https://gh.clun.top/raw.githubusercontent.com/mursor1985/LIVE/main/douyuyqk.m3u",
+			"url": "https://sub.ottiptv.cc/douyuyqk.m3u",
 			"playerType": 2,
-			"timeout": 10,
-			"ua": "okHttp/Mod-1.5.0.0"
+			"timeout": 10
 		},
 		{
-			"name": "肥羊YY轮播",
+			"name": "B 站直播",
 			"type": 0,
-			"url": "https://gh.clun.top/raw.githubusercontent.com/mursor1985/LIVE/main/yylunbo.m3u",
+			"url": "https://sub.ottiptv.cc/bililive.m3u",
 			"playerType": 2,
-			"timeout": 10,
-			"ua": "okHttp/Mod-1.5.0.0"
+			"timeout": 10
 		},
 		{
-			"name": "YTLive",
+			"name": "YY 轮播",
 			"type": 0,
-			"url": "./lib/yo21.txt"
+			"url": "https://sub.ottiptv.cc/yylunbo.m3u",
+			"playerType": 2,
+			"timeout": 10
 		},
 		{
 			"name": "wqwqwq",
@@ -790,38 +680,19 @@
 			"url": "https://la1.wqwqwq.sbs/tv.m3u"
 		},
 		{
-			"name": "YanG",
-			"type": 0,
-			"url": "https://tv.iill.top/m3u/Gather",
-			"ua": "(Windows NT 10.0; Win64; x64) PotPlayer/25.03.21",
-			"epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}",
-			"logo": "https://live.fanmingming.com/tv/{name}.png"
-		},
-		{
-			"name": "nctv",
-			"type": 0,
-			"url": "http://live.nctv.top/x.txt",
-			"ua": "okhttp/4.1.0"
-		},
-		{
-			"name": "ofiii",
-			"type": 0,
-			"url": "./lib/ofiii.m3u"
-		},
-		{
 			"name": "Guovin",
 			"type": 0,
-			"url": "https://gh.clun.top/raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"
+			"url": "https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"
 		},
 		{
 			"name": "mlzlzj",
 			"type": 0,
-			"url": "https://gh.clun.top/raw.githubusercontent.com/mlzlzj/TV/main/output/result.m3u"
+			"url": "https://raw.githubusercontent.com/mlzlzj/TV/main/output/result.m3u"
 		},
 		{
 			"name": "gambiarras",
 			"type": 0,
-			"url": "https://github.com/gambiarras/legal-iptv/blob/main/playlist.m3u"
+			"url": "https://raw.githubusercontent.com/gambiarras/legal-iptv/refs/heads/main/playlist.m3u"
 		},
 		{
 			"name": "epg.pw All",
@@ -1078,6 +949,13 @@
 			"header": {
 				"User-Agent": "okHttp/Mod-1.5.0.0",
 				"Referer": "https://mgtv.ottiptv.cc/"
+			}
+		},
+		{
+			"host": "live.ottiptv.cc",
+			"header": {
+				"User-Agent": "okHttp/Mod-1.5.0.0",
+				"Referer": "https://live.ottiptv.cc/"
 			}
 		},
 		{
