@@ -11,8 +11,6 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 TARGET_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "lib"))
 M3U_FILE = os.path.join(TARGET_DIR, "sbjh.m3u")
 
-BLACK_LIST = ["支付宝风控解除", "依依实力带飞"]
-
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 
 MAX_WORKERS = 5
@@ -55,24 +53,19 @@ async def process_platform(item, session, sem):
 
         detail = await safe_get_json(f"{BASE_URL}/{address}", session)
         if not detail:
-            return room_title, [], 1, 0
+            return room_title, [], 1
 
         zhubo = detail.get("zhubo", [])
         if not zhubo:
-            return room_title, [], 1, 0
+            return room_title, [], 1
 
         group_name = f"{room_title}"
         results = []
         errors = 0
-        filtered = 0
 
         for vod in zhubo:
             name = vod.get("title", "").strip()
             url = vod.get("address", "").strip()
-
-            if any(keyword in name for keyword in BLACK_LIST):
-                filtered += 1
-                continue
 
             if not url:
                 errors += 1
@@ -80,12 +73,11 @@ async def process_platform(item, session, sem):
 
             results.append((group_name, name, url, platform_logo))
 
-        return room_title, results, errors, filtered
+        return room_title, results, errors
 
 async def main_async():
     total_error = 0
     total_success = 0
-    total_filtered = 0
 
     log.info("🚀 Enhanced task initiated.")
     
@@ -111,9 +103,8 @@ async def main_async():
         tasks = [process_platform(item, session, sem) for item in data]
         results = await asyncio.gather(*tasks)
 
-        for room_title, res, errors, filtered in results:
+        for room_title, res, errors in results:
             total_error += errors
-            total_filtered += filtered
             
             for group_name, name, url, logo in res:
                 if url in seen_urls:
@@ -135,7 +126,7 @@ async def main_async():
         log.error(f"❌ Failed to write to file: {e}")
         sys.exit(1)
 
-    summary_msg = f"Collection completed, valid: {total_success}, Shielded: {total_filtered}, Abnormal: {total_error}"
+    summary_msg = f"Collection completed, valid: {total_success}, Abnormal: {total_error}"
     print(f"::notice title=📁 Save path: {M3U_FILE}::{summary_msg}")
 
 def main():
