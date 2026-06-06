@@ -21,45 +21,53 @@ def setup_logging():
     
     formatter = logging.Formatter('[%(asctime)s] %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
 
-    console_handler = logging.StreamHandler(sys.stdout)
-    console_handler.setFormatter(formatter)
-    logger.addHandler(console_handler)
+    consoleHandler = logging.StreamHandler(sys.stdout)
+    consoleHandler.setFormatter(formatter)
+    logger.addHandler(consoleHandler)
     
     return logger
 
 log = setup_logging()
 
-async def safe_get_json(url, session):
-    try:
-        # 设置 10 秒超时，防止个别平台接口卡死
-        async with session.get(url, headers=HEADERS, timeout=10) as r:
-            if r.status != 200:
-                return None
-            return await r.json(content_type=None)
-    except Exception as e:
-        log.error(f"Request Exception: {url} -> {e}")
-        return None
+async def safeGetJson(url, session, maxRetries=3, retryDelay=2):
+    for attemptCount in range(maxRetries):
+        try:
+            # Set 10 seconds timeout to prevent freezing
+            async with session.get(url, headers=HEADERS, timeout=10) as responseObj:
+                if responseObj.status == 200:
+                    return await responseObj.json(content_type=None)
+                
+                # Log non-200 status codes like 412
+                log.warning(f"HTTP {responseObj.status} for {url}. Attempt {attemptCount + 1} of {maxRetries}")
+        except Exception as e:
+            log.error(f"Request Exception: {url} -> {e}. Attempt {attemptCount + 1} of {maxRetries}")
+        
+        # Wait before the next retry
+        if attemptCount < maxRetries - 1:
+            await asyncio.sleep(retryDelay)
+            
+    return None
 
-async def process_platform(item, session, sem):
+async def processPlatform(item, session, sem):
     async with sem:
-        room_title = item.get("title", "").strip()
+        roomTitle = item.get("title", "").strip()
         number = item.get("Number", "")
         address = item.get("address", "")
         
-        xinimg = item.get("xinimg", "")
-        platform_logo = xinimg.replace("clun.top", "cdn.gcufbd.top")
+        xinImg = item.get("xinimg", "")
+        platformLogo = xinImg.replace("clun.top", "cdn.gcufbd.top")
 
-        log.info(f"📺 Fetching Platform：{room_title}（Resource count: {number}）")
+        log.info(f"📺 Fetching Platform: {roomTitle} (Resource count: {number})")
 
-        detail = await safe_get_json(f"{BASE_URL}/{address}", session)
+        detail = await safeGetJson(f"{BASE_URL}/{address}", session)
         if not detail:
-            return room_title, [], 1
+            return roomTitle, [], 1
 
         zhubo = detail.get("zhubo", [])
         if not zhubo:
-            return room_title, [], 1
+            return roomTitle, [], 1
 
-        group_name = f"{room_title}"
+        groupName = f"{roomTitle}"
         results = []
         errors = 0
 
@@ -71,66 +79,66 @@ async def process_platform(item, session, sem):
                 errors += 1
                 continue
 
-            results.append((group_name, name, url, platform_logo))
+            results.append((groupName, name, url, platformLogo))
 
-        return room_title, results, errors
+        return roomTitle, results, errors
 
-async def main_async():
-    total_error = 0
-    total_success = 0
+async def mainAsync():
+    totalError = 0
+    totalSuccess = 0
 
     log.info("🚀 Enhanced task initiated.")
     
-    # 增加 limit_per_host 限制，防止 DNS 解析和内存崩溃
+    # Increase limit_per_host to prevent DNS resolution issues
     connector = aiohttp.TCPConnector(limit=MAX_WORKERS, limit_per_host=10)
     async with aiohttp.ClientSession(connector=connector) as session:
 
-        home = await safe_get_json(f"{BASE_URL}/json.txt", session)
+        home = await safeGetJson(f"{BASE_URL}/json.txt", session)
         if not home:
             log.error("❌ Retrieval failed, collection terminated.")
             sys.exit(1)
 
-        # 直接获取平台列表并剔除第一个元素，移除 Number 判断
+        # Retrieve platform list and remove the first element
         data = home.get("pingtai", [])[1:]
 
-        m3u_lines = ["#EXTM3U x-tvg-url=\"\""]
-        seen_urls = set()
+        m3uLines = ["#EXTM3U x-tvg-url=\"\""]
+        seenUrls = set()
 
         log.info(f"⚡ Found {len(data)} platforms in total.")
 
         sem = asyncio.Semaphore(MAX_WORKERS)
 
-        tasks = [process_platform(item, session, sem) for item in data]
+        tasks = [processPlatform(item, session, sem) for item in data]
         results = await asyncio.gather(*tasks)
 
-        for room_title, res, errors in results:
-            total_error += errors
+        for roomTitle, res, errors in results:
+            totalError += errors
             
-            for group_name, name, url, logo in res:
-                if url in seen_urls:
+            for groupName, name, url, logo in res:
+                if url in seenUrls:
                     continue
 
-                seen_urls.add(url)
-                # 生成带 Logo 的 M3U 标签
-                m3u_lines.append(f'#EXTINF:-1 tvg-logo="{logo}" group-title="{group_name}",{name}')
-                m3u_lines.append(url)
-                total_success += 1
+                seenUrls.add(url)
+                # Generate M3U tag with Logo
+                m3uLines.append(f'#EXTINF:-1 tvg-logo="{logo}" group-title="{groupName}",{name}')
+                m3uLines.append(url)
+                totalSuccess += 1
 
     try:
         os.makedirs(os.path.dirname(M3U_FILE), exist_ok=True)
         
         with open(M3U_FILE, "w", encoding="utf-8") as f:
-            f.write("\n".join(m3u_lines))
-        log.info(f"📄 Generation successful. Total Streams: {total_success}")
+            f.write("\n".join(m3uLines))
+        log.info(f"📄 Generation successful. Total Streams: {totalSuccess}")
     except Exception as e:
         log.error(f"❌ Failed to write to file: {e}")
         sys.exit(1)
 
-    summary_msg = f"Collection completed, valid: {total_success}, Abnormal: {total_error}"
-    print(f"::notice title=📁 Save path: {M3U_FILE}::{summary_msg}")
+    summaryMsg = f"Collection completed, valid: {totalSuccess}, Abnormal: {totalError}"
+    print(f"::notice title=📁 Save path: {M3U_FILE}::{summaryMsg}")
 
 def main():
-    asyncio.run(main_async())
+    asyncio.run(mainAsync())
 
 if __name__ == "__main__":
     main()
