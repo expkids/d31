@@ -15,7 +15,8 @@ BLACK_LIST = ["支付宝风控解除", "依依实力带飞"]
 
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 
-MAX_WORKERS = 15
+# 保持较低的并发量，防止处理大量有效平台时发生 134 内存溢出错误
+MAX_WORKERS = 5
 
 def setup_logging():
     logger = logging.getLogger("ScraperLogger")
@@ -33,6 +34,7 @@ log = setup_logging()
 
 async def safe_get_json(url, session):
     try:
+        # 设置 10 秒超时，防止个别平台接口卡死
         async with session.get(url, headers=HEADERS, timeout=10) as r:
             if r.status != 200:
                 return None
@@ -47,11 +49,11 @@ async def process_platform(item, session, sem):
         number = item.get("Number", "")
         address = item.get("address", "")
         
-        # 获取 logo 并参考 w.json 中的替换逻辑处理
+        # 兼容真实 CDN 地址及旧地址，提取 Logo
         xinimg = item.get("xinimg", "")
-        platform_logo = xinimg.replace("http://clun.top/img/", "")
+        platform_logo = xinimg.replace("clun.top", "cdn.gcufbd.top")
 
-        log.info(f"📺 Concurrent requests：{room_title}（{number}）")
+        log.info(f"📺 Fetching Platform：{room_title}（Resource count: {number}）")
 
         detail = await safe_get_json(f"{BASE_URL}/{address}", session)
         if not detail:
@@ -70,18 +72,14 @@ async def process_platform(item, session, sem):
             name = vod.get("title", "").strip()
             url = vod.get("address", "").strip()
 
-            # 黑名单过滤逻辑保留
             if any(keyword in name for keyword in BLACK_LIST):
-                log.info(f"🚫 Blocked words: {name}")
                 filtered += 1
                 continue
 
-            # 移除了测速和有效性验证（is_valid_stream），只要 url 存在即保留
             if not url:
                 errors += 1
                 continue
 
-            # 将 platform_logo 也加入返回结果中
             results.append((group_name, name, url, platform_logo))
 
         return room_title, results, errors, filtered
@@ -91,11 +89,10 @@ async def main_async():
     total_success = 0
     total_filtered = 0
 
-    log.info("🚀 Task initiated.")
-    log.info(f"📂 Output the absolute path：{M3U_FILE}")
-
-    # aiohttp 连接池配置
-    connector = aiohttp.TCPConnector(limit=MAX_WORKERS)
+    log.info("🚀 Enhanced task initiated.")
+    
+    # 增加 limit_per_host 限制，防止 DNS 解析和内存崩溃
+    connector = aiohttp.TCPConnector(limit=MAX_WORKERS, limit_per_host=10)
     async with aiohttp.ClientSession(connector=connector) as session:
 
         home = await safe_get_json(f"{BASE_URL}/json.txt", session)
@@ -103,31 +100,32 @@ async def main_async():
             log.error("❌ Retrieval failed, collection terminated.")
             sys.exit(1)
 
-        data = home.get("pingtai", [])[1:]
-        data = sorted(data, key=lambda x: int(x.get("Number", 0) or 0), reverse=True)
+        # 获取平台列表并剔除第一个元素
+        raw_data = home.get("pingtai", [])[1:]
+        
+        # 仅保留 Number 大于 0 的平台（即有资源的平台）
+        data = [x for x in raw_data if int(x.get("Number", "0") or 0) > 0]
 
-        m3u_lines = ["#EXTM3U x-tvg-url=\"\""] # 参考 w.json 头部增加属性
+        m3u_lines = ["#EXTM3U x-tvg-url=\"\""]
         seen_urls = set()
 
-        log.info(f"⚡ Multi-threading (Async): {MAX_WORKERS}")
+        log.info(f"⚡ Found {len(data)} platforms with resources.")
 
         sem = asyncio.Semaphore(MAX_WORKERS)
 
         tasks = [process_platform(item, session, sem) for item in data]
-        
         results = await asyncio.gather(*tasks)
 
         for room_title, res, errors, filtered in results:
             total_error += errors
             total_filtered += filtered
             
-            # 解析结果时接收 logo 参数
             for group_name, name, url, logo in res:
                 if url in seen_urls:
                     continue
 
                 seen_urls.add(url)
-                # 按照 w.json 格式加入了 tvg-logo 属性
+                # 生成带 Logo 的 M3U 标签，现在 logo 变量里是完整的图片链接了
                 m3u_lines.append(f'#EXTINF:-1 tvg-logo="{logo}" group-title="{group_name}",{name}')
                 m3u_lines.append(url)
                 total_success += 1
@@ -137,15 +135,12 @@ async def main_async():
         
         with open(M3U_FILE, "w", encoding="utf-8") as f:
             f.write("\n".join(m3u_lines))
-        log.info(f"📄 It has been generated and saved.")
-        log.info(f"✅ Absolute path: {M3U_FILE}")
+        log.info(f"📄 Generation successful. Total Streams: {total_success}")
     except Exception as e:
         log.error(f"❌ Failed to write to file: {e}")
         sys.exit(1)
 
-    summary_msg = f"Collection completed, valid：{total_success}，Shield：{total_filtered}，abnormal：{total_error}"
-    log.info(summary_msg)
-    
+    summary_msg = f"Collection completed, valid: {total_success}, Shielded: {total_filtered}, Abnormal: {total_error}"
     print(f"::notice title=📁 Save path: {M3U_FILE}::{summary_msg}")
 
 def main():
