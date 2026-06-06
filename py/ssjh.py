@@ -15,7 +15,6 @@ BLACK_LIST = ["支付宝风控解除", "依依实力带飞"]
 
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 
-# 保持较低的并发量，防止处理大量有效平台时发生 134 内存溢出错误
 MAX_WORKERS = 5
 
 def setup_logging():
@@ -49,7 +48,6 @@ async def process_platform(item, session, sem):
         number = item.get("Number", "")
         address = item.get("address", "")
         
-        # 兼容真实 CDN 地址及旧地址，提取 Logo
         xinimg = item.get("xinimg", "")
         platform_logo = xinimg.replace("clun.top", "cdn.gcufbd.top")
 
@@ -100,16 +98,13 @@ async def main_async():
             log.error("❌ Retrieval failed, collection terminated.")
             sys.exit(1)
 
-        # 获取平台列表并剔除第一个元素
-        raw_data = home.get("pingtai", [])[1:]
-        
-        # 仅保留 Number 大于 0 的平台（即有资源的平台）
-        data = [x for x in raw_data if int(x.get("Number", "0") or 0) > 0]
+        # 直接获取平台列表并剔除第一个元素，移除 Number 判断
+        data = home.get("pingtai", [])[1:]
 
         m3u_lines = ["#EXTM3U x-tvg-url=\"\""]
         seen_urls = set()
 
-        log.info(f"⚡ Found {len(data)} platforms with resources.")
+        log.info(f"⚡ Found {len(data)} platforms in total.")
 
         sem = asyncio.Semaphore(MAX_WORKERS)
 
@@ -125,7 +120,7 @@ async def main_async():
                     continue
 
                 seen_urls.add(url)
-                # 生成带 Logo 的 M3U 标签，现在 logo 变量里是完整的图片链接了
+                # 生成带 Logo 的 M3U 标签
                 m3u_lines.append(f'#EXTINF:-1 tvg-logo="{logo}" group-title="{group_name}",{name}')
                 m3u_lines.append(url)
                 total_success += 1
